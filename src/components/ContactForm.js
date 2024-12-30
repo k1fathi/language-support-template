@@ -1,5 +1,6 @@
 // src/components/ContactForm.js
 import React, { useState } from "react";
+import Button from "../components/Button";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -172,12 +173,9 @@ const ContactForm = () => {
 
       {/* Submit Button */}
       <div className="form-group full-width mt-6 flex items-center">
-        <button
-          type="submit"
-          className="get-started bg-gradient-to-r from-[#29d7ff] via-[#7083ff] to-[#e000ff] text-white font-bold py-2 px-6 rounded-xl hover:opacity-90 transition-opacity"
-        >
+        <Button type="submit" onClick={() => console.log("clicked")}>
           Send Message
-        </button>
+        </Button>
         <span className="contact-response-message ml-4 hidden"></span>
       </div>
     </form>

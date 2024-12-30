@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaSun, FaMoon } from "react-icons/fa";
+import Button from "../components/Button";
 
 const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,18 +75,13 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/contact"
-              className="get-started px-6 py-2 font-outfit font-bold"
-            >
-              GET STARTED
-            </Link>
+            <Button to="/contact">GET STARTED</Button>
           </li>
         </ul>
       </nav>
 
       {/* Theme Toggle and Language Select */}
-      <div className="flex items-center space-x-4 ml-4">
+      {/* <div className="flex items-center space-x-4 ml-4">
         <select
           value={language}
           onChange={toggleLanguage}
@@ -105,7 +101,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
             <FaMoon className="text-gray-600" />
           )}
         </button>
-      </div>
+      </div> */}
     </header>
   );
 };

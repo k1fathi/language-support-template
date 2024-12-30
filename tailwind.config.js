@@ -4,17 +4,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "zuzzuu-purple": "#6c21b0",
-        "zuzzuu-turquoise": "#2ad8ff",
+        zuzzuu: {
+          blue: "#29d7ff",
+          purple: "#7083ff",
+          pink: "#e000ff",
+        },
       },
-      gradientColorStops: {
-        "zuzzuu-gradient": [
-          "#29d7ff",
-          "#3cbfff",
-          "#7083ff",
-          "#c123ff",
-          "#e000ff",
-        ],
+      backgroundImage: {
+        "zuzzuu-gradient":
+          "linear-gradient(113deg, #29d7ff 18.07%, #3cbfff 27.42%, #7083ff 46.12%, #c123ff 73.51%, #e000ff 83.53%)",
       },
     },
   },

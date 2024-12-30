@@ -1,0 +1,41 @@
+/* src/styles/global.css */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .zuzzuu-button {
+    @apply bg-gradient-to-r from-[#29d7ff] via-[#7083ff] to-[#e000ff] 
+           text-white font-bold py-2 px-6 rounded-xl 
+           hover:opacity-90 transition-opacity
+           cursor-pointer;
+  }
+
+  /* Variant for outline/secondary button */
+  .zuzzuu-button-outline {
+    @apply border-2 border-[#7083ff] 
+           text-[#7083ff] bg-transparent 
+           hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
+           hover:text-white font-bold py-2 px-6 rounded-xl 
+           transition-all duration-300
+           cursor-pointer;
+  }
+
+  /* Disabled state */
+  .zuzzuu-button:disabled, 
+  .zuzzuu-button-outline:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Small variant */
+  .zuzzuu-button-sm {
+    @apply py-1 px-4 text-sm;
+  }
+
+  /* Large variant */
+  .zuzzuu-button-lg {
+    @apply py-3 px-8 text-lg;
+  }
+}
