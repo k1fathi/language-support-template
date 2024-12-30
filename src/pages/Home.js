@@ -1,19 +1,11 @@
 // src/pages/Home.js
-import React, { useContext } from "react";
-import { LanguageContext } from "../contexts/LanguageContext";
+import React from "react";
 
-const Home = () => {
-  const { language, toggleLanguage, languages } = useContext(LanguageContext);
-
-  return (
-    <div>
-      <h1>{languages[language].home}</h1>
-      <button onClick={toggleLanguage}>
-        {language === "en" ? "Switch to Spanish" : "Switch to English"}
-      </button>
-      <p>Welcome to the home page.</p>
-    </div>
-  );
-};
+const Home = () => (
+  <div>
+    <h1 className="text-3xl font-bold">Home Page</h1>
+    <p>Welcome to the home page.</p>
+  </div>
+);
 
 export default Home;
