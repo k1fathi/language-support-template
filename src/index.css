@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Outfit", sans-serif;
+  }
+}
 
 /* Custom styles for the header */
 @layer components {
@@ -21,26 +29,54 @@
   }
 
   .get-started {
-    @apply bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-white font-bold rounded-xl 
+    @apply bg-gradient-to-r from-[#29d7ff] via-[#7083ff] to-[#e000ff] text-white font-bold rounded-xl 
     hover:opacity-90 transition-opacity duration-200;
   }
 }
 
-/* Additional responsive styles */
-@media (max-width: 768px) {
-  .nav {
-    @apply w-full;
-  }
+/* Add these custom styles to your existing index.css */
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #cbd1d8;
+  cursor: pointer;
+  margin-right: 8px;
+  outline: none;
+  transition: all 0.15s ease-out;
+}
 
-  .nav-items {
-    @apply shadow-lg;
-  }
+.option-input:checked {
+  background: linear-gradient(135deg,
+    rgba(112, 131, 255, 1) 0%,
+    rgba(193, 35, 255, 1) 50%,
+    rgba(224, 0, 255, 1) 100%);
+}
 
-  .nav-items li {
-    @apply border-b border-gray-100;
-  }
+.option-input:checked::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .nav-items li:last-child {
-    @apply border-b-0;
-  }
+.gradient-text {
+  background: linear-gradient(113deg,
+    #29d7ff 18.07%,
+    #3cbfff 27.42%,
+    #7083ff 46.12%,
+    #c123ff 73.51%,
+    #e000ff 83.53%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -11,24 +11,24 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
   };
 
   return (
-    <header className="flex justify-between items-center px-5 py-4 shadow-md relative">
+    <header className="flex justify-between items-center px-5 py-4 shadow-md relative bg-white">
       {/* Logo Container */}
       <div className="logo-container flex-1">
         <Link to="/">
           <img
-            src="/assets/images/zuzzuu_logo.svg"
+            src="http://vibte.online/assets/images/zuzzuu_logo.svg"
             alt="Zuzzuu Logo"
-            className="cursor-pointer"
-            style={{ width: "auto", height: "40px" }}
+            className="cursor-pointer w-auto h-10"
           />
         </Link>
       </div>
 
       {/* Hamburger Menu for Mobile */}
-      <div className="hamburger-menu md:hidden">
+      <div className="md:hidden">
         <button
           onClick={toggleMenu}
-          className="text-gray-600 hover:text-gray-800"
+          className="text-gray-600 hover:text-gray-800 p-2"
+          aria-label="Toggle menu"
         >
           <FaBars className="text-2xl" />
         </button>
@@ -44,7 +44,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/games"
-              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
+              className="font-outfit text-gray-700 hover:text-gray-900"
             >
               Games
             </Link>
@@ -52,7 +52,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/features"
-              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
+              className="font-outfit text-gray-700 hover:text-gray-900"
             >
               Features
             </Link>
@@ -60,7 +60,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/blog"
-              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
+              className="font-outfit text-gray-700 hover:text-gray-900"
             >
               Blog
             </Link>
@@ -68,7 +68,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/contact"
-              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
+              className="font-outfit text-gray-700 hover:text-gray-900"
             >
               Contact
             </Link>
@@ -76,7 +76,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/contact"
-              className="get-started block px-6 py-2 text-white rounded-xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 hover:opacity-90"
+              className="get-started px-6 py-2 font-outfit font-bold"
             >
               GET STARTED
             </Link>
@@ -89,7 +89,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
         <select
           value={language}
           onChange={toggleLanguage}
-          className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
+          className="font-outfit bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
         >
           <option value="en">EN</option>
           <option value="es">ES</option>
@@ -97,6 +97,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
         <button
           onClick={toggleTheme}
           className="p-2 rounded-full hover:bg-gray-100"
+          aria-label="Toggle theme"
         >
           {theme === "light" ? (
             <FaSun className="text-yellow-500" />
