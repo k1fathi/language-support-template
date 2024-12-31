@@ -1,10 +1,10 @@
 // src/components/Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaSun, FaMoon } from "react-icons/fa";
-import Button from "../components/Button";
+import { FaBars } from "react-icons/fa";
+import Button from "./Button";
 
-const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
+const Header = ({ language, toggleLanguage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,24 +12,24 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
   };
 
   return (
-    <header className="flex justify-between items-center px-5 py-4 shadow-md relative bg-white">
+    <header className="flex justify-between items-center px-5 py-4 shadow-md relative font-['Outfit']">
       {/* Logo Container */}
       <div className="logo-container flex-1">
         <Link to="/">
           <img
             src="http://vibte.online/assets/images/zuzzuu_logo.svg"
             alt="Zuzzuu Logo"
-            className="cursor-pointer w-auto h-10"
+            className="cursor-pointer"
+            style={{ width: "auto", height: "40px" }}
           />
         </Link>
       </div>
 
       {/* Hamburger Menu for Mobile */}
-      <div className="md:hidden">
+      <div className="hamburger-menu md:hidden">
         <button
           onClick={toggleMenu}
-          className="text-gray-600 hover:text-gray-800 p-2"
-          aria-label="Toggle menu"
+          className="text-gray-600 hover:text-gray-800"
         >
           <FaBars className="text-2xl" />
         </button>
@@ -45,7 +45,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/games"
-              className="font-outfit text-gray-700 hover:text-gray-900"
+              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
             >
               Games
             </Link>
@@ -53,7 +53,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/features"
-              className="font-outfit text-gray-700 hover:text-gray-900"
+              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
             >
               Features
             </Link>
@@ -61,7 +61,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/blog"
-              className="font-outfit text-gray-700 hover:text-gray-900"
+              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
             >
               Blog
             </Link>
@@ -69,7 +69,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <li>
             <Link
               to="/contact"
-              className="font-outfit text-gray-700 hover:text-gray-900"
+              className="block px-4 py-2 text-gray-700 hover:text-gray-900"
             >
               Contact
             </Link>
@@ -80,28 +80,17 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
         </ul>
       </nav>
 
-      {/* Theme Toggle and Language Select */}
-      {/* <div className="flex items-center space-x-4 ml-4">
+      {/* Language Select */}
+      <div className="flex items-center ml-4">
         <select
           value={language}
           onChange={toggleLanguage}
-          className="font-outfit bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
+          className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
         >
           <option value="en">EN</option>
           <option value="es">ES</option>
         </select>
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-gray-100"
-          aria-label="Toggle theme"
-        >
-          {theme === "light" ? (
-            <FaSun className="text-yellow-500" />
-          ) : (
-            <FaMoon className="text-gray-600" />
-          )}
-        </button>
-      </div> */}
+      </div>
     </header>
   );
 };

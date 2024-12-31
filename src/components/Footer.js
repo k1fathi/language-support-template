@@ -163,7 +163,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-8 text-sm text-center">
+      <div className="mt-8 text-sm text-left">
         All Rights Reserved © {new Date().getFullYear()} ZUZZUU
       </div>
     </footer>

@@ -17,6 +17,20 @@
 }
 
 @layer components {
+  /* src/styles/global.css */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loader {
+    animation: spin 1.5s linear infinite;
+  }
+
   .zuzzuu-button {
     @apply text-sm font-bold
            border border-[#eaeaea]
@@ -52,24 +66,24 @@
   .zuzzuu-button-lg {
     @apply py-3 px-8 text-lg;
   }
-  
-  /* Small Outline Variant */
-    .zuzzuu-button-outline-sm {
-        @apply py-1 px-4 text-sm border-2 border-[#7083ff]
-               text-[#7083ff] bg-transparent
-               hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
-               hover:text-white font-bold rounded-xl
-               transition-all duration-300
-               cursor-pointer;
-    }
 
-    /* Large Outline Variant */
-    .zuzzuu-button-outline-lg {
-        @apply py-3 px-8 text-lg border-2 border-[#7083ff]
+  /* Small Outline Variant */
+  .zuzzuu-button-outline-sm {
+    @apply py-1 px-4 text-sm border-2 border-[#7083ff]
                text-[#7083ff] bg-transparent
                hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
                hover:text-white font-bold rounded-xl
                transition-all duration-300
                cursor-pointer;
-    }
+  }
+
+  /* Large Outline Variant */
+  .zuzzuu-button-outline-lg {
+    @apply py-3 px-8 text-lg border-2 border-[#7083ff]
+               text-[#7083ff] bg-transparent
+               hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
+               hover:text-white font-bold rounded-xl
+               transition-all duration-300
+               cursor-pointer;
+  }
 }
