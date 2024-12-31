@@ -62,7 +62,7 @@ const Header = ({ language, toggleLanguage }) => {
             className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
           >
             <option value="en">EN</option>
-            <option value="es">ES</option>
+            <option value="tr">TR</option>
           </select>
         </div>
 
@@ -75,7 +75,7 @@ const Header = ({ language, toggleLanguage }) => {
             className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
           >
             <option value="en">EN</option>
-            <option value="es">ES</option>
+            <option value="tr">TR</option>
           </select>
 
           {/* Mobile Menu Button */}
@@ -98,7 +98,16 @@ const Header = ({ language, toggleLanguage }) => {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } md:hidden`}
       >
-        <div className="pt-20 px-6">
+        {/* Close Button */}
+        <button
+          onClick={toggleMenu}
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+        >
+          <FaTimes className="text-2xl" />
+        </button>
+
+        {/* Mobile Menu Items */}
+        <div className="pt-6 px-6">
           <nav className="flex flex-col">
             {menuItems.map((item, index) => (
               <React.Fragment key={item.to}>
