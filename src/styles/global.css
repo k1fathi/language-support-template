@@ -17,6 +17,25 @@
 }
 
 @layer components {
+
+    /* src/styles/global.css */
+.gradient-text {
+  background: var(--zuzzuu-pink-rainbow-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.subscribe-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-button:active {
+  transform: translateY(0);
+}
+
   /* src/styles/global.css */
   @keyframes spin {
     0% {
@@ -86,4 +105,12 @@
                transition-all duration-300
                cursor-pointer;
   }
+
+  .shadow-lg {
+    --tw-shadow: 0 4px 10px rgb(0 0 0 / 0.1), 0 -4px 6px rgb(0 0 0 / 0.1), 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 -10px 15px -3px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 10px var(--tw-shadow-color), 0 -4px 6px var(--tw-shadow-color), 0 10px 15px -3px var(--tw-shadow-color), 0 -10px 15px -3px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), 
+                var(--tw-ring-shadow, 0 0 #0000), 
+                var(--tw-shadow);
+}
 }

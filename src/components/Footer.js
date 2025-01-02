@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Logo Column */}
         <div className="text-sm text-black max-w-[300px]">
           <img
-            src="http://vibte.online/assets/images/zuzzuu_logo.svg"
+            src="/images/zuzzuu_logo.svg"
             alt="Zuzzuu Logo"
             className="mb-4"
           />

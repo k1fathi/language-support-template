@@ -26,7 +26,7 @@ const Header = ({ language, toggleLanguage }) => {
         <div className="logo-container">
           <Link to="/">
             <img
-              src="http://vibte.online/assets/images/zuzzuu_logo.svg"
+              src="/images/zuzzuu_logo.svg"
               alt="Zuzzuu Logo"
               className="h-10 w-auto"
             />
