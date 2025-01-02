@@ -16,7 +16,7 @@ const Header = ({ language, toggleLanguage }) => {
     { to: "/features", label: "Features" },
     { to: "/blog", label: "Blog" },
     { to: "/contact", label: "Contact" },
-    { to: "/case-study", label: "Case Study" },
+    { to: "/case-studies", label: "Case Studies" },
   ];
 
   return (
