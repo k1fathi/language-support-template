@@ -6,7 +6,15 @@
     "industry": "Retail",
     "region": "North America",
     "campaign": "Black Friday",
-    "image": "https://via.placeholder.com/400x300"
+    "image": "/images/case_study_1.jpg",
+    "about_the_client": "Tavial is a leading audio equipment retailer focused on providing high-quality sound experiences.",
+    "what_they_say_about_us": "RTB House helped us maximize our Black Friday campaign reach and conversions.",
+    "the_challenge": "Tavial needed to increase sales during the competitive Black Friday period.",
+    "the_solution": "RTB House used personalized retargeting to re-engage website visitors with relevant product recommendations.",
+    "the_result": "Tavial saw a significant increase in sales and ROI during the Black Friday season.",
+    "re-attribution cost reduction": 85,
+    "revenue increase": 10,
+    "d7_roas_target_realization": 3
   },
   {
     "id": 2,
@@ -15,7 +23,15 @@
     "industry": "Food & Beverage",
     "region": "Europe",
     "campaign": "Retargeting",
-    "image": "https://via.placeholder.com/400x300"
+    "image": "/images/case_study_2.png",
+    "about_the_client": "Export Experience is a globally recognized restaurant chain known for its unique culinary experiences.",
+    "what_they_say_about_us": "RTB House's retargeting strategies were instrumental in driving online reservations and increasing customer engagement.",
+    "the_challenge": "Export Experience wanted to improve online bookings and customer retention.",
+    "the_solution": "RTB House implemented personalized retargeting campaigns showcasing enticing menu items and special offers.",
+    "the_result": "Export Experience witnessed a substantial increase in online reservations and improved customer loyalty.",
+    "re-attribution cost reduction": 75,
+    "revenue increase": 20,
+    "d7_roas_target_realization": 2.5
   },
   {
     "id": 3,
@@ -24,7 +40,15 @@
     "industry": "Fashion",
     "region": "North America",
     "campaign": "Scaling",
-    "image": "https://via.placeholder.com/400x300"
+    "image": "/images/case_study_3.png",
+    "about_the_client": "REVOLVE is a leading online fashion retailer known for its curated selection of designer brands.",
+    "what_they_say_about_us": "RTB House helped us scale our advertising efforts and reach a wider audience while maintaining strong performance.",
+    "the_challenge": "REVOLVE aimed to expand its customer base and increase brand awareness.",
+    "the_solution": "RTB House implemented scalable retargeting campaigns across multiple channels, reaching potential customers with personalized fashion recommendations.",
+    "the_result": "REVOLVE achieved significant growth in customer acquisition and brand visibility.",
+    "re-attribution cost reduction": 65,
+    "revenue increase": 13,
+    "d7_roas_target_realization": 1.5
   },
   {
     "id": 4,
@@ -33,7 +57,15 @@
     "industry": "Gaming",
     "region": "Global",
     "campaign": "Retargeting",
-    "image": "https://via.placeholder.com/400x300"
+    "image": "/images/case_study_4.jpeg",
+    "about_the_client": "Bagelcode is a rapidly growing mobile game company. Since 2012, they have developed and published titles with a mission to provide fun around the world while experiencing business growth. Their major games—including Club Vegas Slots, Cash Billionaire Slots, and Jackpot Madness Slots—are played by over 50 million users worldwide. Club Vegas Slots has ranked among the 100 top-grossing games on Google Play US. The company is now developing various casual games with domestic and global studios in order to diversify its genre portfolio.",
+    "what_they_say_about_us": "The RTB House team is supportive and highly responsive. Even though we saw great success from their initial retargeting campaigns, we were still looking for ways to optimize performance. The RTB House team developed and applied a new strategy that reduced costs while increasing both performance and stability.",
+    "the_challenge": "Club Vegas Slots had been running a retargeting campaign with RTB House for more than a year. In line with the client’s marketing strategy, our algorithms were tied to existing user segments. Over time, we saw that return on ad spend (ROAS) was satisfactory, but cost per reattribution could still be improved. Our challenge was to prove to Club Vegas Slots that our Deep Learning technology could automate segmentation to bring better results in all KPIs.",
+    "the_solution": "Prior to the change in approach, segmentation was based on users’ in-app behavior. The RTB House team suggested consolidating users into a single group. This simplified the approach and allowed our Deep Learning algorithm to autonomously target individuals from a larger user base. Dynamic ad optimization calibrated ad content to each user in real time. Players saw more relevant retargeting ads with which they would be more likely to engage and convert their interest into meaningful in-app actions. Learning-powered bidder’s ability to process up to 2.5 K times more operations leading to purchase decisions than standard market solutions also further improved effectiveness.",
+    "the_result": "Results from the new approach were fast. Measured against campaigns before the change, the streamlined segmentation and advanced targeting strategies led to an 86% reduction in the cost per re-attribution, significantly improving efficiency. The targeted approach not only brought users back to the app. It also encouraged in-game purchases, leading to an over 100% increase in revenue from retargeted users. The campaign also over-delivered on the critical Day-7 ROAS metric by 1.5x.",
+    "re-attribution cost reduction": 86,
+    "revenue increase": 100,
+    "d7_roas_target_realization": 1.5
   },
   {
     "id": 5,
@@ -42,7 +74,15 @@
     "industry": "E-commerce",
     "region": "Asia",
     "campaign": "Retargeting",
-    "image": "https://via.placeholder.com/400x300"
+    "image": "/images/case_study_5.jpeg",
+    "about_the_client": "Price Comparison Plus is a leading price comparison website in Asia, helping consumers find the best deals.",
+    "what_they_say_about_us": "RTB House's sophisticated retargeting strategies helped us improve conversion rates and drive more traffic to our platform.",
+    "the_challenge": "Price Comparison Plus needed to increase user engagement and drive more conversions from price comparisons.",
+    "the_solution": "RTB House implemented personalized retargeting campaigns showcasing relevant product comparisons and deals.",
+    "the_result": "Price Comparison Plus saw a significant increase in click-through rates and conversions.",
+    "re-attribution cost reduction": 85,
+    "revenue increase": 90,
+    "d7_roas_target_realization": 2
   },
   {
     "id": 6,
@@ -51,6 +91,14 @@
     "industry": "Jewelry",
     "region": "Asia",
     "campaign": "Deep Learning",
-    "image": "https://via.placeholder.com/400x300"
+    "image": "/images/case_study_6.jpeg",
+    "about_the_client": "Chow Sang Sang is a renowned jewelry brand in Asia, known for its exquisite craftsmanship and high-quality products.",
+    "what_they_say_about_us": "RTB House's Deep Learning technology has significantly improved our average order values and driven substantial revenue growth.",
+    "the_challenge": "Chow Sang Sang sought to increase average order values and drive more sales.",
+    "the_solution": "RTB House implemented Deep Learning-powered campaigns that personalized product recommendations and offers to each user.",
+    "the_result": "Chow Sang Sang achieved a 27% increase in average order values and substantial revenue growth.",
+    "re-attribution cost reduction": 85,
+    "revenue increase": 27,
+    "d7_roas_target_realization": 0.5
   }
 ]

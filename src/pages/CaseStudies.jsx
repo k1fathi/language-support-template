@@ -5,7 +5,6 @@ const CaseStudiesPage = () => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [filters, setFilters] = useState({
     industry: "",
-    clientType: "",
     region: "",
     campaign: "",
   });
@@ -31,7 +30,6 @@ const CaseStudiesPage = () => {
   const filteredCaseStudies = caseStudies.filter((study) => {
     return (
       (filters.industry === "" || study.industry === filters.industry) &&
-      (filters.clientType === "" || study.clientType === filters.clientType) &&
       (filters.region === "" || study.region === filters.region) &&
       (filters.campaign === "" || study.campaign === filters.campaign)
     );
@@ -66,19 +64,6 @@ const CaseStudiesPage = () => {
           >
             <option value="">Select Industry</option>
             {getOptions("industry").map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <select
-            name="clientType"
-            value={filters.clientType}
-            onChange={handleFilterChange}
-            className="w-full max-w-xs p-3 border border-gray-300 rounded-full"
-          >
-            <option value="">Select Client Type</option>
-            {getOptions("clientType").map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
