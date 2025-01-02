@@ -12,7 +12,7 @@ const CaseStudyCard = ({ study }) => {
       />
       <div className="p-4">
         <h2 className="text-lg font-semibold mb-2">{study.title}</h2>
-        <p className="bg-zuzzuu-blue text-gray-700 mb-3 pl-3 rounded-xl shadow-sm">
+        <p className="bg-zuzzuu-very_pale_blue text-gray-700 mb-3 pl-3 rounded-xl shadow-sm">
           <span className="font-semibold text-gray-900">Client:</span>{" "}
           {study.client}
         </p>

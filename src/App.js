@@ -10,7 +10,7 @@ import "./styles/App.css";
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
 const Blog = lazy(() => import("./pages/Blog"));
-const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
+const CaseStudiesPage = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 
 function App() {
