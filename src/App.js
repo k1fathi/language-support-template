@@ -4,6 +4,7 @@ import { LoaderProvider } from "./contexts/LoaderContext";
 import RouteLoader from "./components/RouteLoader";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import "./styles/App.css";
 
 // Lazy-loaded components
 const Contact = lazy(() => import("./pages/Contact"));

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Black Friday Promos Reverberate Right Through November for Audio Lovers",
+    "client": "Tavial",
+    "industry": "Retail",
+    "region": "North America",
+    "campaign": "Black Friday",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 2,
+    "title": "World’s Leading Restaurant Gets a Taste of Retargeting Success",
+    "client": "Export Experience",
+    "industry": "Food & Beverage",
+    "region": "Europe",
+    "campaign": "Retargeting",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 3,
+    "title": "Results at Scale for a Vinram Brand Redefining Fashion Retail",
+    "client": "REVOLVE",
+    "industry": "Fashion",
+    "region": "North America",
+    "campaign": "Scaling",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 4,
+    "title": "Club Vegas Cashes in with Calibrated Retargeting for Social Casino",
+    "client": "Bagelcode",
+    "industry": "Gaming",
+    "region": "Global",
+    "campaign": "Retargeting",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 5,
+    "title": "Building Ideal Retargeting Scenarios for a Price Comparison Champion",
+    "client": "Price Comparison Plus",
+    "industry": "E-commerce",
+    "region": "Asia",
+    "campaign": "Retargeting",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 6,
+    "title": "Chow Sang Sang leverages Deep Learning to generate 27% higher average order values",
+    "client": "周生生 (Chow Sang Sang)",
+    "industry": "Jewelry",
+    "region": "Asia",
+    "campaign": "Deep Learning",
+    "image": "https://via.placeholder.com/400x300"
+  }
+]

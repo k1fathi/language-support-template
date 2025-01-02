@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/global.css";
+import "./styles/index.css";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import App from "./App";
 
