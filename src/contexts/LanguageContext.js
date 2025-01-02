@@ -1,22 +1,24 @@
 // src/contexts/LanguageContext.js
 import React, { createContext, useState } from "react";
+import { translations } from "./translations";
 
 export const LanguageContext = createContext();
-
-const languages = {
-  en: { home: "Home Page", about: "About Page" },
-  es: { home: "Página Principal", about: "Página de Información" },
-};
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("en");
 
   const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en");
+    setLanguage((prevLang) => (prevLang === "en" ? "tr" : "en"));
+  };
+
+  const value = {
+    language,
+    toggleLanguage,
+    languages: translations,
   };
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, languages }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

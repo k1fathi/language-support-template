@@ -1,4 +1,3 @@
-// src/components/ContactForm.js
 import React, { useState } from "react";
 import Button from "../components/Button";
 
@@ -17,12 +16,46 @@ const ContactForm = () => {
     phone: "",
   });
 
+  const validateEmail = (email) => {
+    if (!email) {
+      return "Email is required.";
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return "Email is invalid.";
+    }
+    return "";
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone) {
+      return "Phone number is required.";
+    }
+    if (!/^\d{10}$/.test(phone)) {
+      return "Phone number must be 10 digits.";
+    }
+    return "";
+  };
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [id.replace("input_customer_", "")]: value,
     }));
+
+    // Validate email and phone on change
+    if (id === "input_customer_email") {
+      setValidationMessages((prev) => ({
+        ...prev,
+        email: validateEmail(value),
+      }));
+    }
+    if (id === "input_customer_phone") {
+      setValidationMessages((prev) => ({
+        ...prev,
+        phone: validatePhone(value),
+      }));
+    }
   };
 
   const handleRadioChange = (e) => {
@@ -34,8 +67,21 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted:", formData);
+
+    // Validate all fields before submission
+    const emailMessage = validateEmail(formData.email);
+    const phoneMessage = validatePhone(formData.phone);
+
+    setValidationMessages({
+      email: emailMessage,
+      phone: phoneMessage,
+    });
+
+    // Proceed with submission if there are no validation errors
+    if (!emailMessage && !phoneMessage) {
+      console.log("Form submitted:", formData);
+      // Add your form submission logic here
+    }
   };
 
   return (

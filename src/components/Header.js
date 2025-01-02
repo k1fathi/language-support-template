@@ -16,6 +16,7 @@ const Header = ({ language, toggleLanguage }) => {
     { to: "/features", label: "Features" },
     { to: "/blog", label: "Blog" },
     { to: "/contact", label: "Contact" },
+    { to: "/case-study", label: "Case Study" },
   ];
 
   return (
@@ -34,21 +35,17 @@ const Header = ({ language, toggleLanguage }) => {
         </div>
 
         {/* Desktop Navigation and Controls */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-6">
           {/* Desktop Menu Items */}
-          <nav className="flex items-center">
-            {menuItems.map((item, index) => (
-              <React.Fragment key={item.to}>
-                <Link
-                  to={item.to}
-                  className="text-gray-700 hover:text-gray-900 px-4"
-                >
-                  {item.label}
-                </Link>
-                {index < menuItems.length - 1 && (
-                  <div className="h-4 w-px bg-gray-300"></div>
-                )}
-              </React.Fragment>
+          <nav className="flex items-center space-x-6">
+            {menuItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="text-gray-700 hover:text-gray-900 hover:gradient-text transition-all duration-300"
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
 
@@ -59,7 +56,7 @@ const Header = ({ language, toggleLanguage }) => {
           <select
             value={language}
             onChange={toggleLanguage}
-            className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
+            className="bg-gray-100 border border-gray-300 rounded-xl px-2 py-1 text-sm"
           >
             <option value="en">EN</option>
             <option value="tr">TR</option>
@@ -72,7 +69,7 @@ const Header = ({ language, toggleLanguage }) => {
           <select
             value={language}
             onChange={toggleLanguage}
-            className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm"
+            className="bg-gray-100 border border-gray-300 rounded-xl px-2 py-1 text-sm"
           >
             <option value="en">EN</option>
             <option value="tr">TR</option>
@@ -113,7 +110,7 @@ const Header = ({ language, toggleLanguage }) => {
               <React.Fragment key={item.to}>
                 <Link
                   to={item.to}
-                  className="py-4 text-xl text-gray-800 hover:text-gray-900"
+                  className="py-4 text-xl text-gray-800 hover:gradient-text transition-all duration-300"
                   onClick={toggleMenu}
                 >
                   {item.label}
