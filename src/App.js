@@ -4,6 +4,7 @@ import { LoaderProvider } from "./contexts/LoaderContext";
 import RouteLoader from "./components/RouteLoader";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { ZButton } from "./components/ZButton";
 import "./styles/App.css";
 
 // Lazy-loaded components
@@ -16,6 +17,7 @@ const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 function App() {
   return (
     <LoaderProvider>
+      <ZButton />
       <Router>
         <RouteLoader />
         <div className="min-h-screen flex flex-col">
