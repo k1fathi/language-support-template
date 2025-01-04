@@ -1,4 +1,3 @@
-// src/components/Button.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,8 +13,12 @@ const Button = ({
   ...props
 }) => {
   const navigate = useNavigate();
+
+  // Define base classes based on variant
   const baseClass =
     variant === "outline" ? "zuzzuu-button-outline" : "zuzzuu-button";
+
+  // Define size classes based on size
   const sizeClass =
     size === "sm"
       ? "zuzzuu-button-sm"
@@ -23,12 +26,13 @@ const Button = ({
       ? "zuzzuu-button-lg"
       : "";
 
+  // Handle button click
   const handleClick = (e) => {
     if (to) {
-      navigate(to);
+      navigate(to); // Navigate to the specified route
     }
     if (onClick) {
-      onClick(e);
+      onClick(e); // Call the onClick handler if provided
     }
   };
 
