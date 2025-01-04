@@ -36,14 +36,11 @@ const Subscription = () => {
             className="w-full md:w-1/3 lg:w-1/4 relative"
             style={{ height: "0", transform: "translateY(-20%)" }}
           >
-            <div
-              className="absolute left-0 w-full"
-              style={{ bottom: "-8rem" }}
-            >
+            <div className="absolute left-0 w-full" style={{ bottom: "-8rem" }}>
               <img
                 src="images/subscribe_phone.png"
                 alt="Subscribe"
-                className="rounded-lg w-full max-w-[280px] mx-auto"
+                className="hidden md:block rounded-lg w-full max-w-[280px] mx-auto"
                 style={{
                   transform: "scale(1.2)",
                   marginTop: "-3rem",
