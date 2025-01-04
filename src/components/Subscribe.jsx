@@ -28,7 +28,7 @@ const Subscription = () => {
         </div>
 
         <div
-          className="relative rounded-xl p-4 md:p-8 lg:p-12 mt-4 md:mt-8 flex flex-col md:flex-row items-center gap-6 md:gap-8"
+          className="relative rounded-xl p-4 md:p-8 lg:p-12 mt-4 md:mt-8 flex flex-col md:flex-row items-center gap-6 sm:gap-4 md:gap-8 h-auto lg:h-64"
           style={{ background: "var(--zuzzuu-pink-rainbow-color)" }}
         >
           {/* Image Container with absolute positioning */}
