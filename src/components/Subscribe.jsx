@@ -18,7 +18,7 @@ const Subscription = () => {
       className="py-8 px-4 md:py-12 md:px-8 bg-[#f6fbf8]"
     >
       <div className="max-w-8xl mx-auto">
-        <div className="text-center">
+        <div className="text-center mb-12">
           <h1 className="gradient-text text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Subscribe us for more
           </h1>

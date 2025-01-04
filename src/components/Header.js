@@ -12,7 +12,7 @@ const Header = ({ language, toggleLanguage }) => {
   };
 
   const menuItems = [
-    { to: "/games", label: "Games" },
+    // { to: "/games", label: "Games" },
     { to: "/features", label: "Features" },
     { to: "/blog", label: "Blog" },
     { to: "/contact", label: "Contact" },
@@ -53,14 +53,14 @@ const Header = ({ language, toggleLanguage }) => {
           <Button to="/contact">GET STARTED</Button>
 
           {/* Language Select */}
-          <select
+          {/* <select
             value={language}
             onChange={toggleLanguage}
             className="bg-gray-100 border border-gray-300 rounded-xl px-2 py-1 text-sm"
           >
             <option value="en">EN</option>
             <option value="tr">TR</option>
-          </select>
+          </select> */}
         </div>
 
         {/* Mobile Controls */}
