@@ -113,3 +113,14 @@ section {
            cursor-pointer;
   }
 }
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.button-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure the button container takes full width on mobile */
+@media (max-width: 768px) {
+  .button-container {
+    width: 100%;
+  }
+}

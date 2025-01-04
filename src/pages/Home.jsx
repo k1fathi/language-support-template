@@ -1,4 +1,5 @@
 import React from "react";
+import Features from "../components/Features";
 import Subscribe from "../components/Subscribe";
 import Button from "../components/Button";
 
@@ -29,6 +30,7 @@ const Home = () => (
       </div>
     </section>
 
+    <Features />
     <Subscribe />
   </div>
 );
