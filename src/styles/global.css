@@ -127,8 +127,12 @@
 }
 
 section {
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding: 2rem;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Ensure the button container takes full width on mobile */
@@ -137,7 +141,7 @@ section {
     width: 100%;
   }
   section {
-    margin-top: 3rem;
+    margin: 1rem 0;
     padding: 1rem;
   }
 }

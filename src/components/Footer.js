@@ -5,7 +5,7 @@ import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-light_grayish_cyan mx-4 mt-16 p-8 rounded-t-[0.625rem] sm:mx-2 md:mx-8">
+    <footer className="bg-light_grayish_cyan mx-4 p-8 rounded-t-[0.625rem] sm:mx-2 md:mx-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         {/* Logo Column */}
         <div className="text-sm text-black max-w-[300px]">
@@ -26,6 +26,7 @@ const Footer = () => {
             Address: İTÜ Teknokent ARI 2 <br />
             Binasi B Blok No: 501
             <br />
+            34467, Sariyer/Istanbul
             34467, Sariyer/Istanbul
           </address>
         </div>

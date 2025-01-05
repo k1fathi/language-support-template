@@ -6,7 +6,7 @@ import Button from "../components/Button";
 const Home = () => (
   <div>
     <section id="discover_the_all_new_zuzzuu">
-      <div className="text-center mb-12">
+      <div className="text-center">
         <a
           href="/features" // Replace with a valid URL or path
           className="discover-btn inline-block mb-5 px-5 py-2.5 bg-gray-800 text-white no-underline rounded-full font-bold"
@@ -15,7 +15,7 @@ const Home = () => (
         </a>
         <h1 className="text-4xl my-2.5 text-gray-800 font-bold">
           One Platform for <br />
-          <span className="gradient-text text-5xl font-bold">
+          <span className="gradient-text font-bold">
             Revenue Growth
           </span>
         </h1>

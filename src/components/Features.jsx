@@ -52,8 +52,10 @@ const ImageLoader = () => {
   };
 
   return (
-    <div className="w-full">
-      <div className="relative">
+    <section
+      id="features"
+    >
+      <div className="relative w-full max-w-6xl">
         {/* Arrow buttons - only shown when needed */}
         {showArrows && (
           <>
@@ -90,8 +92,8 @@ const ImageLoader = () => {
                          flex items-center justify-center font-bold
                          transition-all duration-200 ${
                            activeButton === button.id
-                             ? "text-white"
-                             : "text-black"
+                             ? "scale-110"
+                             : "scale-100"
                          }`}
               style={{
                 backgroundImage: `url(${
@@ -108,23 +110,57 @@ const ImageLoader = () => {
       </div>
 
       {/* Image display area */}
-      <div
-        className="w-full h-full flex justify-center items-center
-                    px-4 md:px-8"
-      >
+      <div className="w-full max-w-6xl flex justify-center items-center mt-8">
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="loading-dots">
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+          </div>
         ) : loadedImage ? (
           <img
             src={loadedImage}
             alt="Loaded content"
-            className="max-w-full max-h-full object-contain mt-2"
+            className="max-w-full max-h-[150vh] object-contain"
           />
         ) : (
           <div>Please select a category to load the image.</div>
         )}
       </div>
-    </div>
+
+      {/* CSS for loading animation */}
+      <style jsx>{`
+        .loading-dots {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .dot {
+          width: 10px;
+          height: 10px;
+          margin: 0 5px;
+          background-color: #333;
+          border-radius: 50%;
+          animation: bounce 1.4s infinite ease-in-out;
+        }
+        .dot:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .dot:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+          0%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-10px);
+          }
+        }
+      `}</style>
+    </section>
   );
 };
 

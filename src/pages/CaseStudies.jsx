@@ -53,7 +53,7 @@ const CaseStudiesPage = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-xl p-8">
+      <div className="bg-white rounded-xl p-2">
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <select
