@@ -95,7 +95,7 @@ const ImageLoader = () => {
         {/* Button container */}
         <div
           className="flex overflow-x-auto scrollbar-hide-mobile 
-         scroll-smooth gap-4 px-4 md:px-8 
+         scroll-smooth px-4 md:px-8 
          flex-row flex-nowrap content-around justify-evenly items-center"
           style={{ height: "10rem" }}
         >
