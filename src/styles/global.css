@@ -6,6 +6,19 @@
 @tailwind utilities;
 
 :root {
+  --color-blue: #29d7ff;
+  --color-purple: #7083ff;
+  --color-pink: #e000ff;
+  --color-very-pale-blue: #f3fbff;
+  /* Gradient colors */
+  --color-light-grayish-cyan: #e0f7fa; /* Light grayish cyan */
+  --color-very-pale-blue: #f3fbff; /* Very pale blue */
+  --color-blue-light: #29d7ff; /* Light blue */
+  --color-turquoise: #3cbfff; /* Turquoise */
+  --color-indigo: #7083ff; /* Indigo */
+  --color-purple: #c123ff; /* Purple */
+  --color-pink: #e000ff; /* Pink */
+
   --zuzzuu-pink-rainbow-color: linear-gradient(
     113deg,
     #29d7ff 18.07%,
@@ -57,15 +70,15 @@ section {
 /* Button styles */
 @layer components {
   .zuzzuu-button {
-  @apply text-sm font-bold
+    @apply text-sm font-bold
          border-2 border-[#eaeaea] /* 2px solid grey border */
          rounded-xl
          text-white
          w-fit
          px-6 py-2;
-  background: var(--zuzzuu-pink-rainbow-color);
-  background-clip: padding-box; /* Ensure the border is visible */
-}
+    background: var(--zuzzuu-pink-rainbow-color);
+    background-clip: padding-box; /* Ensure the border is visible */
+  }
 
   /* Variant for outline/secondary button */
   .zuzzuu-button-outline {

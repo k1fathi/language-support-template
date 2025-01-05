@@ -7,12 +7,16 @@ module.exports = {
         outfit: ["Outfit", "sans-serif"],
       },
       colors: {
-        zuzzuu: {
-          blue: "#29d7ff",
-          purple: "#7083ff",
-          pink: "#e000ff",
-          very_pale_blue: "#f3fbff",
-        },
+        blue: "var(--color-blue)", // Custom Blue (#29d7ff)
+        purple: "var(--color-purple)", // Custom Purple (#7083ff)
+        pink: "var(--color-pink)", // Custom Pink (#e000ff)
+        very_pale_blue: "var(--color-very-pale-blue)", // Custom Very Pale Blue (#f3fbff)
+        blueLight: "var(--color-blue-light)", // Light Blue
+        turquoise: "var(--color-turquoise)", // Turquoise Blue
+        indigo: "var(--color-indigo)", // Indigo
+        primary: "var(--primary)", // Primary Gradient or Color
+        secondary: "var(--secondary)", // Secondary Gradient or Color
+        light_grayish_cyan: "var(--color-light-grayish-cyan)", // Light Grayish Cyan
       },
       backgroundImage: {
         "zuzzuu-gradient":
