@@ -2,57 +2,43 @@
   {
     "id": "ai",
     "name": "AI",
-    "lightImgBtn": "data/feature-btn-light-ai.png",
-    "darkImgBtn": "data/feature-btn-dark-ai.png",
-    "largeImgFrame": "data/feature-ai.png"
-  },
-  {
-    "id": "lowCode",
-    "name": "Low Code",
-    "lightImgBtn": "data/feature-btn-light-lowCode.png",
-    "darkImgBtn": "data/feature-btn-dark-lowCode.png",
-    "largeImgFrame": "data/feature-lowCode.png"
-  },
-  {
-    "id": "noCode",
-    "name": "No Code",
-    "lightImgBtn": "data/feature-btn-light-noCode.png",
-    "darkImgBtn": "data/feature-btn-dark-noCode.png",
-    "largeImgFrame": "data/feature-noCode.png"
+    "lightImgBtn": "images/feature-btn-light-ai.png",
+    "darkImgBtn": "images/feature-btn-dark-ai.png",
+    "largeImgFrame": "images/feature-ai.png"
   },
   {
     "id": "screens",
     "name": "Screens",
-    "lightImgBtn": "data/feature-btn-light-screens.png",
-    "darkImgBtn": "data/feature-btn-dark-screens.png",
-    "largeImgFrame": "data/feature-screens.png"
+    "lightImgBtn": "images/feature-btn-light-screens.png",
+    "darkImgBtn": "images/feature-btn-dark-screens.png",
+    "largeImgFrame": "images/feature-screens.png"
   },
   {
     "id": "dashboards",
     "name": "Dashboards",
-    "lightImgBtn": "data/feature-btn-light-dashboards.png",
-    "darkImgBtn": "data/feature-btn-dark-dashboards.png",
-    "largeImgFrame": "data/feature-dashboards.png"
+    "lightImgBtn": "images/feature-btn-light-dashboards.png",
+    "darkImgBtn": "images/feature-btn-dark-dashboards.png",
+    "largeImgFrame": "images/feature-dashboards.png"
   },
   {
     "id": "games",
     "name": "Games",
-    "lightImgBtn": "data/feature-btn-light-games.png",
-    "darkImgBtn": "data/feature-btn-dark-games.png",
-    "largeImgFrame": "data/feature-games.png"
+    "lightImgBtn": "images/feature-btn-light-games.png",
+    "darkImgBtn": "images/feature-btn-dark-games.png",
+    "largeImgFrame": "images/feature-games.png"
   },
   {
     "id": "analytics",
     "name": "Analytics",
-    "lightImgBtn": "data/feature-btn-light-analytics.png",
-    "darkImgBtn": "data/feature-btn-dark-analytics.png",
-    "largeImgFrame": "data/feature-analytics.png"
+    "lightImgBtn": "images/feature-btn-light-analytics.png",
+    "darkImgBtn": "images/feature-btn-dark-analytics.png",
+    "largeImgFrame": "images/feature-analytics.png"
   },
   {
     "id": "awards",
     "name": "Awards",
-    "lightImgBtn": "data/feature-btn-light-awards.png",
-    "darkImgBtn": "data/feature-btn-dark-awards.png",
-    "largeImgFrame": "data/feature-awards.png"
+    "lightImgBtn": "images/feature-btn-light-awards.png",
+    "darkImgBtn": "images/feature-btn-dark-awards.png",
+    "largeImgFrame": "images/feature-awards.png"
   }
 ]

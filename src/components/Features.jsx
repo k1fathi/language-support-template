@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import icons
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const ImageLoader = () => {
   const [activeButton, setActiveButton] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedImage, setLoadedImage] = useState(null);
   const [buttons, setButtons] = useState([]);
+  const [showArrows, setShowArrows] = useState(false);
 
   useEffect(() => {
     // Fetch the button data from the JSON file
@@ -13,128 +14,103 @@ const ImageLoader = () => {
       .then((response) => response.json())
       .then((data) => setButtons(data))
       .catch((error) => console.error("Error loading button data:", error));
-  }, []);
+
+    // Check if buttons container needs arrows
+    const checkOverflow = () => {
+      const container = document.querySelector(".button-container");
+      if (container) {
+        setShowArrows(container.scrollWidth > container.clientWidth);
+      }
+    };
+
+    // Initial check
+    checkOverflow();
+
+    // Add resize listener
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [buttons]);
 
   const handleButtonClick = (buttonId, largeImgFrame) => {
     setActiveButton(buttonId);
     setIsLoading(true);
     setLoadedImage(null);
 
-    // Simulate image loading
     setTimeout(() => {
       setIsLoading(false);
       setLoadedImage(largeImgFrame);
-    }, 2000); // Adjust the timeout as needed
+    }, 2000);
   };
 
   const handleScroll = (direction) => {
     const container = document.querySelector(".button-container");
-    const scrollAmount = 100; // Adjust scroll amount as needed
-    if (direction === "left") {
-      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    } else if (direction === "right") {
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
+    const scrollAmount = container.clientWidth / 2;
+    container.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <div>
-      <div style={{ position: "relative" }}>
-        {/* Left scroll button with React Icon */}
-        <button
-          onClick={() => handleScroll("left")}
-          style={{
-            position: "absolute",
-            left: "0",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 1,
-            background: "rgba(0, 0, 0, 0.5)",
-            color: "#fff",
-            border: "none",
-            padding: "10px",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <FaChevronLeft /> {/* React Icon for left scroll */}
-        </button>
+    <div className="w-full">
+      <div className="relative">
+        {/* Arrow buttons - only shown when needed */}
+        {showArrows && (
+          <>
+            <button
+              onClick={() => handleScroll("left")}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 
+                       bg-white bg-opacity-80 rounded-full flex items-center justify-center
+                       hover:bg-opacity-100 transition-all duration-200 shadow-md"
+            >
+              <FaChevronLeft className="text-gray-600" />
+            </button>
 
-        {/* Button container with horizontal scroll */}
+            <button
+              onClick={() => handleScroll("right")}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 
+                       bg-white bg-opacity-80 rounded-full flex items-center justify-center
+                       hover:bg-opacity-100 transition-all duration-200 shadow-md"
+            >
+              <FaChevronRight className="text-gray-600" />
+            </button>
+          </>
+        )}
+
+        {/* Button container */}
         <div
-          className="button-container"
-          style={{
-            display: "flex",
-            overflowX: "auto",
-            scrollBehavior: "smooth",
-            gap: "10px",
-            padding: "10px 40px", // Add padding for scroll buttons
-            scrollbarWidth: "none", // Hide scrollbar for Firefox
-            msOverflowStyle: "none", // Hide scrollbar for IE/Edge
-          }}
+          className="button-container flex overflow-x-auto scrollbar-hide 
+                      scroll-smooth gap-4 px-4 py-4 md:px-8"
         >
           {buttons.map((button) => (
             <button
               key={button.id}
               onClick={() => handleButtonClick(button.id, button.largeImgFrame)}
+              className={`flex-none min-w-[120px] h-12 bg-cover bg-center 
+                         flex items-center justify-center font-bold
+                         transition-all duration-200 ${
+                           activeButton === button.id
+                             ? "text-white"
+                             : "text-black"
+                         }`}
               style={{
-                flex: "0 0 calc(33.33% - 10px)", // Show 3 buttons at a time
                 backgroundImage: `url(${
                   activeButton === button.id
                     ? button.darkImgBtn
                     : button.lightImgBtn
                 })`,
-                backgroundSize: "cover",
-                height: "50px",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color: activeButton === button.id ? "#fff" : "#000",
-                fontWeight: "bold",
-                minWidth: "100px", // Ensure buttons have a minimum width
               }}
             >
               {button.name}
             </button>
           ))}
         </div>
-
-        {/* Right scroll button with React Icon */}
-        <button
-          onClick={() => handleScroll("right")}
-          style={{
-            position: "absolute",
-            right: "0",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 1,
-            background: "rgba(0, 0, 0, 0.5)",
-            color: "#fff",
-            border: "none",
-            padding: "10px",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <FaChevronRight /> {/* React Icon for right scroll */}
-        </button>
       </div>
 
+      {/* Image display area */}
       <div
-        style={{
-          backgroundColor: "#f0f0f0",
-          width: "100%",
-          height: "1080px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        className="w-full h-full flex justify-center items-center
+                    px-4 md:px-8"
       >
         {isLoading ? (
           <div>Loading...</div>
@@ -142,7 +118,7 @@ const ImageLoader = () => {
           <img
             src={loadedImage}
             alt="Loaded content"
-            style={{ maxWidth: "100%", maxHeight: "100%" }}
+            className="max-w-full max-h-full object-contain mt-2"
           />
         ) : (
           <div>Please select a category to load the image.</div>

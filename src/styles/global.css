@@ -28,11 +28,6 @@
     #e000ff 83.53%
   );
 }
-
-section {
-  margin-top: 3rem;
-}
-
 /* Gradient text utility */
 .gradient-text {
   background: var(--zuzzuu-pink-rainbow-color);
@@ -131,9 +126,18 @@ section {
   display: none;
 }
 
+section {
+  margin-top: 3rem;
+  padding: 2rem;
+}
+
 /* Ensure the button container takes full width on mobile */
 @media (max-width: 768px) {
   .button-container {
     width: 100%;
+  }
+  section {
+    margin-top: 3rem;
+    padding: 1rem;
   }
 }

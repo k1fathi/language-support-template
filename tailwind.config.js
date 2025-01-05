@@ -11,7 +11,7 @@ module.exports = {
         purple: "var(--color-purple)", // Custom Purple (#7083ff)
         pink: "var(--color-pink)", // Custom Pink (#e000ff)
         very_pale_blue: "var(--color-very-pale-blue)", // Custom Very Pale Blue (#f3fbff)
-        blueLight: "var(--color-blue-light)", // Light Blue
+        blue_light: "var(--color-blue-light)", // Light Blue
         turquoise: "var(--color-turquoise)", // Turquoise Blue
         indigo: "var(--color-indigo)", // Indigo
         primary: "var(--primary)", // Primary Gradient or Color

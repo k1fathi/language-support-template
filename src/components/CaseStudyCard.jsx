@@ -15,7 +15,7 @@ const CaseStudyCard = ({ study }) => {
           <h2 className="text-lg font-semibold mb-2 line-clamp-2">
             {study.title}
           </h2>
-          <p className="bg-zuzzuu-very_pale_blue text-gray-700 mb-3 pl-3 rounded-xl shadow-sm">
+          <p className="bg-very_pale_blue text-gray-700 mb-3 pl-3 rounded-xl shadow-sm">
             <span className="font-semibold text-gray-900">Client:</span>{" "}
             {study.client}
           </p>
@@ -35,7 +35,7 @@ const CaseStudyCard = ({ study }) => {
 
         <Link
           to={`/case-study/${study.id}`}
-          className="absolute bottom-4 right-4 flex items-center text-blue-500 hover:text-blue-600 text-xs transition-colors duration-200 ease-in-out gap-2 cursor-pointer rounded-full px-2 py-1"
+          className="absolute bottom-4 right-4 flex items-center text-blue_light-500 hover:text-blue_light-600 text-xs transition-colors duration-200 ease-in-out gap-2 cursor-pointer rounded-full px-2 py-1"
         >
           <span>Read More</span>
           <FaArrowRight className="inline-block" />

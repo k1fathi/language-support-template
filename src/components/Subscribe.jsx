@@ -15,7 +15,7 @@ const Subscription = () => {
   return (
     <section
       id="subscribe_us_for_more"
-      className="py-8 px-4 md:py-12 md:px-8 bg-[#f6fbf8]"
+      className="bg-[#f6fbf8]"
     >
       <div className="max-w-8xl mx-auto">
         <div className="text-center mb-12">
