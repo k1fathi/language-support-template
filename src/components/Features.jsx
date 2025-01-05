@@ -7,12 +7,26 @@ const ImageLoader = () => {
   const [loadedImage, setLoadedImage] = useState(null);
   const [buttons, setButtons] = useState([]);
   const [showArrows, setShowArrows] = useState(false);
+  const [isImageVisible, setIsImageVisible] = useState(false); // Control fade-in effect for large image
+  const [hoveredButton, setHoveredButton] = useState(null); // Track hovered button
 
   useEffect(() => {
     // Fetch the button data from the JSON file
     fetch("/data/features.json")
       .then((response) => response.json())
-      .then((data) => setButtons(data))
+      .then((data) => {
+        setButtons(data);
+
+        // Set the default image to Dashboards
+        const dashboardButton = data.find(
+          (button) => button.name === "Dashboards"
+        );
+        if (dashboardButton) {
+          setLoadedImage(dashboardButton.largeImgFrame);
+          setActiveButton(dashboardButton.id);
+          setIsImageVisible(true); // Show the default image with fade-in effect
+        }
+      })
       .catch((error) => console.error("Error loading button data:", error));
 
     // Check if buttons container needs arrows
@@ -29,17 +43,18 @@ const ImageLoader = () => {
     // Add resize listener
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
-  }, [buttons]);
+  }, []);
 
   const handleButtonClick = (buttonId, largeImgFrame) => {
     setActiveButton(buttonId);
     setIsLoading(true);
-    setLoadedImage(null);
+    setIsImageVisible(false); // Hide the current image before loading the new one
 
     setTimeout(() => {
       setIsLoading(false);
       setLoadedImage(largeImgFrame);
-    }, 2000);
+      setIsImageVisible(true); // Fade in the new image after loading
+    }, 2000); // Adjust the delay to match the fade-in duration
   };
 
   const handleScroll = (direction) => {
@@ -52,9 +67,7 @@ const ImageLoader = () => {
   };
 
   return (
-    <section
-      id="features"
-    >
+    <section id="features" className="flex flex-col justify-center">
       <div className="relative w-full max-w-6xl">
         {/* Arrow buttons - only shown when needed */}
         {showArrows && (
@@ -81,82 +94,75 @@ const ImageLoader = () => {
 
         {/* Button container */}
         <div
-          className="button-container flex overflow-x-auto scrollbar-hide 
-                      scroll-smooth gap-4 px-4 py-4 md:px-8"
+          className="flex overflow-x-auto scrollbar-hide-mobile 
+         scroll-smooth gap-4 px-4 md:px-8 
+         flex-row flex-nowrap content-around justify-evenly items-center"
+          style={{ height: "10rem" }}
         >
           {buttons.map((button) => (
-            <button
+            <div
               key={button.id}
               onClick={() => handleButtonClick(button.id, button.largeImgFrame)}
-              className={`flex-none min-w-[120px] h-12 bg-cover bg-center 
-                         flex items-center justify-center font-bold
-                         transition-all duration-200 ${
+              onMouseEnter={() => setHoveredButton(button.id)} // Track hover
+              onMouseLeave={() => setHoveredButton(null)} // Clear hover
+              className={`flex-none min-w-[120px] flex flex-col items-center justify-center 
+                         transition-all duration-200 cursor-pointer ${
                            activeButton === button.id
-                             ? "scale-110"
+                             ? "scale-110" // Scale up active button
                              : "scale-100"
                          }`}
-              style={{
-                backgroundImage: `url(${
-                  activeButton === button.id
-                    ? button.darkImgBtn
-                    : button.lightImgBtn
-                })`,
-              }}
             >
-              {button.name}
-            </button>
+              <img
+                src={
+                  activeButton === button.id || hoveredButton === button.id
+                    ? button.darkImgBtn // Show dark image for active or hovered button
+                    : button.lightImgBtn // Show light image for inactive buttons
+                }
+                alt={button.name}
+                className="button-3d w-14 h-14" // Adjust size as needed
+              />
+              <span className="text-sm font-medium text-gray-700 mt-2">
+                {button.name}
+              </span>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Image display area */}
-      <div className="w-full max-w-6xl flex justify-center items-center mt-8">
+      <div className="w-full max-w-6xl flex justify-center items-center">
         {isLoading ? (
-          <div className="loading-dots">
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-          </div>
+          <div className="spinner-loader"></div>
         ) : loadedImage ? (
           <img
             src={loadedImage}
             alt="Loaded content"
-            className="max-w-full max-h-[150vh] object-contain"
+            className={`max-w-full max-h-[80vh] object-contain transition-opacity duration-500 ${
+              isImageVisible ? "opacity-100" : "opacity-0"
+            }`}
           />
         ) : (
           <div>Please select a category to load the image.</div>
         )}
       </div>
 
-      {/* CSS for loading animation */}
+      {/* CSS for spinner loader */}
       <style jsx>{`
-        .loading-dots {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .dot {
-          width: 10px;
-          height: 10px;
-          margin: 0 5px;
-          background-color: #333;
+        .spinner-loader {
+          border: 4px solid rgba(0, 0, 0, 0.1);
+          border-left-color: #333; /* Spinner color */
           border-radius: 50%;
-          animation: bounce 1.4s infinite ease-in-out;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
         }
-        .dot:nth-child(2) {
-          animation-delay: 0.2s;
-        }
-        .dot:nth-child(3) {
-          animation-delay: 0.4s;
-        }
-        @keyframes bounce {
-          0%,
-          80%,
-          100% {
-            transform: translateY(0);
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
           }
-          40% {
-            transform: translateY(-10px);
+          100% {
+            transform: rotate(360deg);
           }
         }
       `}</style>

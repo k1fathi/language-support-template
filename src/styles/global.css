@@ -127,7 +127,6 @@
 }
 
 section {
-  margin-top: 2rem;
   padding: 2rem;
   flex-wrap: wrap;
   align-content: center;
@@ -143,5 +142,27 @@ section {
   section {
     margin: 1rem 0;
     padding: 1rem;
+  }
+}
+
+/* Custom class to hide scrollbars on mobile */
+.scrollbar-hide-mobile {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.scrollbar-hide-mobile::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Hide scrollbar for mobile only */
+@media (max-width: 768px) {
+  .scrollbar-hide-mobile {
+    overflow-x: scroll;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide-mobile::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 }
