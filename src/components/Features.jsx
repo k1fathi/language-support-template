@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import ImagePane from "./ImagePane"; // Import the ImagePane component
 
 const ImageLoader = () => {
   const [activeButton, setActiveButton] = useState(null);
@@ -7,8 +8,7 @@ const ImageLoader = () => {
   const [loadedImage, setLoadedImage] = useState(null);
   const [buttons, setButtons] = useState([]);
   const [showArrows, setShowArrows] = useState(false);
-  const [isImageVisible, setIsImageVisible] = useState(false); // Control fade-in effect for large image
-  const [hoveredButton, setHoveredButton] = useState(null); // Track hovered button
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   useEffect(() => {
     // Fetch the button data from the JSON file
@@ -24,7 +24,6 @@ const ImageLoader = () => {
         if (dashboardButton) {
           setLoadedImage(dashboardButton.largeImgFrame);
           setActiveButton(dashboardButton.id);
-          setIsImageVisible(true); // Show the default image with fade-in effect
         }
       })
       .catch((error) => console.error("Error loading button data:", error));
@@ -48,13 +47,11 @@ const ImageLoader = () => {
   const handleButtonClick = (buttonId, largeImgFrame) => {
     setActiveButton(buttonId);
     setIsLoading(true);
-    setIsImageVisible(false); // Hide the current image before loading the new one
 
     setTimeout(() => {
       setIsLoading(false);
-      setLoadedImage(largeImgFrame);
-      setIsImageVisible(true); // Fade in the new image after loading
-    }, 2000); // Adjust the delay to match the fade-in duration
+      setLoadedImage(largeImgFrame); // Update the image URL dynamically
+    }, 500); // Simulate loading delay
   };
 
   const handleScroll = (direction) => {
@@ -67,7 +64,10 @@ const ImageLoader = () => {
   };
 
   return (
-    <section id="features" className="flex flex-col justify-center">
+    <section
+      id="features"
+      className="flex flex-col justify-center items-center"
+    >
       <div className="relative w-full max-w-6xl">
         {/* Arrow buttons - only shown when needed */}
         {showArrows && (
@@ -129,43 +129,10 @@ const ImageLoader = () => {
         </div>
       </div>
 
-      {/* Image display area */}
-      <div className="w-full max-w-6xl flex justify-center items-center">
-        {isLoading ? (
-          <div className="spinner-loader"></div>
-        ) : loadedImage ? (
-          <img
-            src={loadedImage}
-            alt="Loaded content"
-            className={`max-w-full max-h-[80vh] object-contain transition-opacity duration-500 ${
-              isImageVisible ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        ) : (
-          <div>Please select a category to load the image.</div>
-        )}
+      {/* Use the ImagePane component with dynamic imageUrl */}
+      <div className="w-full flex justify-center items-center">
+        <ImagePane imageUrl={loadedImage} isLoading={isLoading} />
       </div>
-
-      {/* CSS for spinner loader */}
-      <style jsx>{`
-        .spinner-loader {
-          border: 4px solid rgba(0, 0, 0, 0.1);
-          border-left-color: #333; /* Spinner color */
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
     </section>
   );
 };
