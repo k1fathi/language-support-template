@@ -48,7 +48,7 @@ const MaximizeUserSales = () => {
   const activeImage = sections.find((s) => s.id === activeSection)?.image;
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16">
+    <section className="w-full max-w-7xl mx-auto px-4">
       {/* Header Section */}
       <div className="text-center mb-8 md:mb-16">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
