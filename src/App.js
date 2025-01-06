@@ -11,6 +11,7 @@ import "./styles/App.css";
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
 const Blog = lazy(() => import("./pages/Blog"));
+const FeaturesPage = lazy(() => import("./pages/Features"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/features" element={<FeaturesPage />} />
                 <Route path="/case-studies" element={<CaseStudiesPage />} />
                 <Route path="/case-study/:id" element={<CaseStudyDetail />} />
               </Routes>

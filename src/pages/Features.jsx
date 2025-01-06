@@ -1,10 +1,10 @@
 // src/pages/Features.js
 import React from "react";
+import Features from "../components/Features";
 
-const Features = () => (
+const FeaturesPage = () => (
   <div>
-    <h1 className="text-3xl font-bold">Features Page</h1>
-    <p>Discover our features.</p>
+    <Features />
   </div>
 );
 
