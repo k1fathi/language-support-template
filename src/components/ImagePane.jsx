@@ -10,7 +10,7 @@ const ImagePane = ({ imageUrl, isLoading }) => {
       // Set a timer to hide the loader after 500ms
       const timer = setTimeout(() => {
         setShowLoader(false);
-      }, 1000);
+      }, 2500);
 
       return () => clearTimeout(timer); // Cleanup timer on unmount
     } else {
