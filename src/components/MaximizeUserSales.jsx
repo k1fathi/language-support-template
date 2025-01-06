@@ -4,7 +4,8 @@ import ImagePane from "./ImagePane";
 const MaximizeUserSales = () => {
   const [activeSection, setActiveSection] = useState("1");
   const [sections, setSections] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Initial loading state
+  const [isImageLoading, setIsImageLoading] = useState(false); // Loading state for image transitions
 
   useEffect(() => {
     fetch("/data/maximizeYourSales.json")
@@ -24,6 +25,16 @@ const MaximizeUserSales = () => {
       return "text-[#29d7ff]";
     }
     return "text-[#8E97CD] hover:text-[#29d7ff] transition-colors duration-300";
+  };
+
+  const handleSectionClick = (id) => {
+    setIsImageLoading(true); // Show loader when a section is clicked
+    setActiveSection(id);
+
+    // Simulate a delay for image loading (replace with actual image loading logic if needed)
+    setTimeout(() => {
+      setIsImageLoading(false); // Hide loader after the image is loaded
+    }, 1000); // Adjust the delay as needed
   };
 
   if (isLoading) {
@@ -60,7 +71,7 @@ const MaximizeUserSales = () => {
             <div
               key={section.id}
               className="cursor-pointer"
-              onClick={() => setActiveSection(section.id)}
+              onClick={() => handleSectionClick(section.id)}
             >
               <h2
                 className={`text-2xl md:text-4xl font-bold transition-colors duration-300 ${getFeatureColor(
@@ -83,7 +94,10 @@ const MaximizeUserSales = () => {
 
         {/* Right Side - ImagePane */}
         <div className="w-full md:w-1/2">
-          <ImagePane imageUrl={activeImage} isLoading={isLoading} />
+          <ImagePane
+            imageUrl={activeImage}
+            isLoading={isImageLoading} // Pass the image loading state
+          />
         </div>
       </div>
     </section>
