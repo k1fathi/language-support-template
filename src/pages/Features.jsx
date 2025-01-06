@@ -8,4 +8,4 @@ const FeaturesPage = () => (
   </div>
 );
 
-export default Features;
+export default FeaturesPage;

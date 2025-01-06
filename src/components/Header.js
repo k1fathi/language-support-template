@@ -66,14 +66,14 @@ const Header = ({ language, toggleLanguage }) => {
         {/* Mobile Controls */}
         <div className="flex md:hidden items-center space-x-4">
           {/* Language Select - Mobile */}
-          <select
+          {/* <select
             value={language}
             onChange={toggleLanguage}
             className="bg-gray-100 border border-gray-300 rounded-xl px-2 py-1 text-sm"
-          >
+          > 
             <option value="en">EN</option>
             <option value="tr">TR</option>
-          </select>
+          </select> 
 
           {/* Mobile Menu Button */}
           <button
