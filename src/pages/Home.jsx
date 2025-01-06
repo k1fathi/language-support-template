@@ -7,7 +7,7 @@ import MaximizeUserSales from "../components/MaximizeUserSales";
 
 const Home = () => (
   <div>
-    <section id="discover_the_all_new_zuzzuu">
+    <section id="discover_the_all_new_zuzzuu" className="mt-6">
       <div className="text-center">
         <a
           href="/features" // Replace with a valid URL or path

@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ZButton } from "./components/ZButton";
 import "./styles/App.css";
+import Loader from "./components/Loader";
+
 
 // Lazy-loaded components
 const Contact = lazy(() => import("./pages/Contact"));
@@ -14,6 +16,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const FeaturesPage = lazy(() => import("./pages/Features"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
+
 
 function App() {
   return (
@@ -24,7 +27,7 @@ function App() {
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
