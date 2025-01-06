@@ -228,40 +228,43 @@ section {
 
 /* mainloader */
 
-.text-gradient {
-  background: linear-gradient(
-    113deg,
-    #29d7ff 18.07%,
-    #3cbfff 27.42%,
-    #7083ff 46.12%,
-    #c123ff 73.51%,
-    #e000ff 83.53%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+/* Container for Accordion and ImagePane */
 .container-maximize-your-sale {
   display: flex;
+  flex-direction: column; /* Stack vertically on mobile */
   gap: 2rem;
   align-items: flex-start;
 }
 
+@media (min-width: 768px) {
+  .container-maximize-your-sale {
+    flex-direction: row; /* Align horizontally on desktop */
+  }
+}
+
+/* Accordion Section */
 .accordion {
-  flex: 1;
+  width: 100%; /* Full width on mobile */
 }
 
+@media (min-width: 768px) {
+  .accordion {
+    width: 50%; /* Half width on desktop */
+  }
+}
+
+/* ImagePane Section */
 .maximize-your-sale-large-image-container {
-  flex: 1;
+  width: 100%; /* Full width on mobile */
 }
 
-.maximize-your-sale-large-image {
-  width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease;
+@media (min-width: 768px) {
+  .maximize-your-sale-large-image-container {
+    width: 50%; /* Half width on desktop */
+  }
 }
 
+/* Animation for Fade-In Effect */
 @keyframes fadeIn {
   from {
     opacity: 0;

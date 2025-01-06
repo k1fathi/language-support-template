@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import ImagePane from "./ImagePane"; // Import the ImagePane component
+import ImagePane from "./ImagePane"; 
 
 const ImageLoader = () => {
   const [activeButton, setActiveButton] = useState(null);
