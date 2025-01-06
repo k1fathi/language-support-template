@@ -15,9 +15,9 @@ const Subscription = () => {
   return (
     <section id="subscribe_us_for_more" className="bg-[#f6fbf8]">
       <div className="text-center">
-        <h1 className="gradient-text text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        <span className="gradient-text">
           Subscribe us for more
-        </h1>
+        </span>
         <p className="text-gray-700 text-base md:text-lg mb-8">
           Subscribe to stay up to date with new developments and news.
         </p>

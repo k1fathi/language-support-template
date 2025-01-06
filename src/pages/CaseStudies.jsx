@@ -43,9 +43,9 @@ const CaseStudiesPage = () => {
   return (
     <section className="py-12 px-4 max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="gradient-text text-4xl md:text-5xl font-bold">
+         <span className="gradient-text">
           Sharing the Success
-        </h1>
+        </span>
         <p className="text-gray-700 mt-4 text-lg">
           Don’t just take our word for it. <br /> Discover inspiring stories of
           players who transformed their leisure time into a world of fun and

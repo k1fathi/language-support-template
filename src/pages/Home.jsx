@@ -2,6 +2,8 @@ import React from "react";
 import Features from "../components/Features";
 import Subscribe from "../components/Subscribe";
 import Button from "../components/Button";
+import MaximizeUserSales from "../components/MaximizeUserSales";
+
 
 const Home = () => (
   <div>
@@ -13,12 +15,10 @@ const Home = () => (
         >
           Discover the all-new Zuzzuu ➔
         </a>
-        <h1 className="text-4xl my-2.5 text-gray-800 font-bold">
-          One Platform for <br />
-          <span className="gradient-text font-bold">
-            Revenue Growth
-          </span>
-        </h1>
+        <h1 className="text-4xl my-2.5 text-gray-800 font-bold">One Platform for</h1>
+        <span className="gradient-text">
+          Revenue Growth
+        </span>
         <p className="description mb-5 text-gray-600">
           <span className="font-bold">
             One platform for all your needs, a hub for AI powered work:
@@ -31,6 +31,7 @@ const Home = () => (
     </section>
 
     <Features />
+    <MaximizeUserSales />
     <Subscribe />
   </div>
 );

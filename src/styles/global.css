@@ -35,8 +35,27 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  line-height: 2 !important;
+  font-weight: bold; /* font-bold */
+  margin-bottom: 1rem; /* mb-4 */
+  line-height: 2 !important; /* Adjusted line height */
+  text-align: center;
+
+  /* Responsive font sizes */
+  font-size: 1.875rem; /* text-3xl for default screens */
 }
+
+@media (min-width: 768px) { /* Medium screens (md) */
+  .gradient-text {
+    font-size: 2.25rem; /* text-4xl */
+  }
+}
+
+@media (min-width: 1024px) { /* Large screens (lg) */
+  .gradient-text {
+    font-size: 2.5rem; /* text-5xl */
+  }
+}
+
 
 /* Subscribe button hover and active states */
 .subscribe-button:hover {
