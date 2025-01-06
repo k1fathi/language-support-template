@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 const MaximizeUserSales = () => {
-  const [activeTab, setActiveTab] = useState("1"); // Set the first tab as default
-  const [tabsData, setTabsData] = useState([]); // State to store the fetched data
-  const [isLoading, setIsLoading] = useState(true); // State to handle loading
+  const [activeSection, setActiveSection] = useState("1");
+  const [sections, setSections] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch data from the JSON file
   useEffect(() => {
     fetch("/data/maximizeYourSales.json")
       .then((response) => response.json())
       .then((data) => {
-        setTabsData(data);
+        setSections(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -19,86 +18,73 @@ const MaximizeUserSales = () => {
       });
   }, []);
 
-  // Find the active tab data
-  const activeTabData = tabsData.find((tab) => tab.id === activeTab);
+  const getFeatureColor = (id) => {
+    if (id === activeSection) {
+      return "text-[#29d7ff]";
+    }
+    return "text-[#8E97CD] hover:text-[#29d7ff] transition-colors duration-300";
+  };
 
-  // Show a loading state while fetching data
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="spinner-loader"></div>
-      </div>
-    );
-  }
-
-  // Show an error message if no data is found
-  if (!tabsData.length) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        Failed to load data. Please try again later.
+      <div className="flex justify-center items-center h-48">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
   }
 
   return (
-    <section
-      id="mazimize_your_sales"
-      class="flex flex-col justify-center items-center"
-    >
-      <span className="gradient-text">
-        Maximize Your Sales <br />
-        with ZUZZUU!
-      </span>
-      <p className="text-gray-700 text-base md:text-lg mb-8">
-        Supercharge your sales and marketing. All of your needs, in one place.
-      </p>
+    <section className="w-full max-w-7xl mx-auto px-4 py-16">
+      {/* Header Section */}
+      <div className="text-center mb-16">
+        <h1 className="text-5xl font-bold mb-4">
+          <span className="text-gradient">Maximize Your Sales</span>
+          <br />
+          <span className="text-gradient">with ZUZZUU!</span>
+        </h1>
+        <p className="text-gray-800 text-lg">
+          Supercharge your sales and marketing.
+          <br />
+          All of your needs, in one place.
+        </p>
+      </div>
 
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center">
-          {/* Left Side: Large Image */}
-          <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-            {activeTabData && (
-              <img
-                src={activeTabData.image}
-                alt={activeTabData.title}
-                className="w-full max-w-md object-contain"
-              />
-            )}
-          </div>
-
-          {/* Right Side: Tabs and Content */}
-          <div className="w-full md:w-1/2">
-            <div className="flex flex-col space-y-4">
-              {/* Tabs */}
-              <div className="flex flex-wrap gap-4">
-                {tabsData.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                      activeTab === tab.id
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                    }`}
-                  >
-                    {tab.title}
-                  </button>
-                ))}
-              </div>
-
-              {/* Tab Content */}
-              {activeTabData && (
-                <div className="mt-6">
-                  <h2 className="text-2xl font-bold text-gray-800">
-                    {activeTabData.bold_text}
-                  </h2>
-                  <p className="mt-4 text-gray-600">
-                    {activeTabData.description}
-                  </p>
+      <div className="container-maximize-your-sale">
+        {/* Left Side - Accordion */}
+        <div className="accordion">
+          {sections.map((section) => (
+            <div
+              key={section.id}
+              className="space-y-6 mb-8 cursor-pointer"
+              onClick={() => setActiveSection(section.id)}
+            >
+              <h2
+                className={`text-4xl font-bold transition-colors duration-300 ${getFeatureColor(
+                  section.id
+                )}`}
+              >
+                {section.title}
+              </h2>
+              {section.id === activeSection && (
+                <div className="space-y-4 animate-fadeIn">
+                  <h3 className="text-gray-800 font-semibold">
+                    {section.bold_text}
+                  </h3>
+                  <p className="text-gray-600">{section.description}</p>
                 </div>
               )}
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Right Side - Image */}
+        <div className="maximize-your-sale-large-image-container">
+          <img
+            src={sections.find((s) => s.id === activeSection)?.image}
+            alt="Large Feature"
+            className="maximize-your-sale-large-image"
+            style={{ opacity: 1, transition: "opacity 2s" }}
+          />
         </div>
       </div>
     </section>
