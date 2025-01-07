@@ -1,25 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const ImagePane = ({ imageUrl, isLoading }) => {
   const [showLoader, setShowLoader] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
+  const loadedImages = useRef(new Set());
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    setShowLoader(isLoading);
-    if (!isLoading) {
-      setImageLoaded(false);
-      if (imageUrl) {
-        const img = new Image();
-        img.onload = () => {
-          setCurrentImage(imageUrl);
-          setImageLoaded(true);
-          setShowLoader(false);
-        };
-        img.src = imageUrl;
-      } else {
+    if (!isLoading && imageUrl) {
+      if (loadedImages.current.has(imageUrl) && !isFirstLoad.current) {
+        setCurrentImage(imageUrl);
+        setImageLoaded(true);
         setShowLoader(false);
+        return;
       }
+
+      setShowLoader(true);
+      setImageLoaded(false);
+      const img = new Image();
+      img.onload = () => {
+        loadedImages.current.add(imageUrl);
+        setCurrentImage(imageUrl);
+        setImageLoaded(true);
+        setShowLoader(false);
+        isFirstLoad.current = false;
+      };
+      img.src = imageUrl;
+    } else {
+      setShowLoader(false);
     }
     return () => setImageLoaded(false);
   }, [imageUrl, isLoading]);
@@ -34,7 +43,7 @@ const ImagePane = ({ imageUrl, isLoading }) => {
         <img
           src={currentImage}
           alt="Loaded content"
-          className={`max-w-full max-h-[80vh] object-contain transition-opacity duration-700 ease-in-out ${
+          className={`max-w-full max-h-[80vh] object-contain transition-opacity duration-1000 ease-in-out ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
         />
