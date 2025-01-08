@@ -1,0 +1,48 @@
+/* src/styles/components/maximize-your-sale.css */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container-maximize-your-sale {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .container-maximize-your-sale {
+    flex-direction: row;
+  }
+}
+
+.accordion {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .accordion {
+    width: 50%;
+  }
+}
+
+.maximize-your-sale-large-image-container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .maximize-your-sale-large-image-container {
+    width: 50%;
+  }
+}

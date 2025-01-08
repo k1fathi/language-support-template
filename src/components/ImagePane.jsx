@@ -33,11 +33,36 @@ const ImagePane = ({ imageUrl, isLoading }) => {
     return () => setImageLoaded(false);
   }, [imageUrl, isLoading]);
 
+  // Inline styles for the loader
+  const loaderStyles = {
+    border: "4px solid rgba(0, 0, 0, 0.1)",
+    borderLeftColor: "#7083ff", // Using the purple color directly
+    borderRadius: "50%",
+    width: "40px",
+    height: "40px",
+    animation: "spin 1s linear infinite",
+  };
+
+  // Keyframes for the spin animation
+  const spinKeyframes = `
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  `;
+
   return (
     <div className="w-full max-w-6xl flex justify-center items-center min-h-[300px]">
+      {/* Inject the keyframes into a style tag */}
+      <style>{spinKeyframes}</style>
+
       {showLoader ? (
         <div className="flex justify-center items-center">
-          <div className="spinner-loader"></div>
+          <div style={loaderStyles}></div>
         </div>
       ) : currentImage ? (
         <img

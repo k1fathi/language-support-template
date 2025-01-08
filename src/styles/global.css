@@ -10,14 +10,12 @@
   --color-purple: #7083ff;
   --color-pink: #e000ff;
   --color-very-pale-blue: #f3fbff;
-  /* Gradient colors */
-  --color-light-grayish-cyan: #e0f7fa; /* Light grayish cyan */
-  --color-very-pale-blue: #f3fbff; /* Very pale blue */
-  --color-blue-light: #29d7ff; /* Light blue */
-  --color-turquoise: #3cbfff; /* Turquoise */
-  --color-indigo: #7083ff; /* Indigo */
-  --color-purple: #c123ff; /* Purple */
-  --color-pink: #e000ff; /* Pink */
+  --color-light-grayish-cyan: #e0f7fa;
+  --color-blue-light: #29d7ff;
+  --color-turquoise: #3cbfff;
+  --color-indigo: #7083ff;
+  --color-purple: #c123ff;
+  --color-pink: #e000ff;
 
   --zuzzuu-pink-rainbow-color: linear-gradient(
     113deg,
@@ -28,126 +26,14 @@
     #e000ff 83.53%
   );
 }
-/* Gradient text utility */
-.gradient-text {
-  background: var(--zuzzuu-pink-rainbow-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  font-weight: bold; /* font-bold */
-  margin-bottom: 1rem; /* mb-4 */
-  line-height: 2 !important; /* Adjusted line height */
-  text-align: center;
 
-  /* Responsive font sizes */
-  font-size: 1.875rem; /* text-3xl for default screens */
-}
-
-@media (min-width: 768px) {
-  /* Medium screens (md) */
-  .gradient-text {
-    font-size: 2.25rem; /* text-4xl */
-  }
-}
-
-@media (min-width: 1024px) {
-  /* Large screens (lg) */
-  .gradient-text {
-    font-size: 2.5rem; /* text-5xl */
-  }
-}
-
-/* Subscribe button hover and active states */
-.subscribe-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.subscribe-button:active {
-  transform: translateY(0);
-}
-
-/* Loader animation */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loader {
-  animation: spin 1.5s linear infinite;
-}
-
-/* Button styles */
-@layer components {
-  .zuzzuu-button {
-    @apply text-sm font-bold
-         border-2 border-[#eaeaea] /* 2px solid grey border */
-         rounded-xl
-         text-white
-         w-fit
-         px-6 py-2;
-    background: var(--zuzzuu-pink-rainbow-color);
-    background-clip: padding-box; /* Ensure the border is visible */
-  }
-
-  /* Variant for outline/secondary button */
-  .zuzzuu-button-outline {
-    @apply border-2 border-[#7083ff]
-           text-[#7083ff] bg-transparent
-           hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
-           hover:text-white font-bold py-2 px-6 rounded-xl
-           transition-all duration-300
-           cursor-pointer;
-  }
-
-  /* Disabled state */
-  .zuzzuu-button:disabled,
-  .zuzzuu-button-outline:disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
-
-  /* Small variant */
-  .zuzzuu-button-sm {
-    @apply py-1 px-4 text-sm;
-  }
-
-  /* Large variant */
-  .zuzzuu-button-lg {
-    @apply py-3 px-8 text-lg;
-  }
-
-  /* Small Outline Variant */
-  .zuzzuu-button-outline-sm {
-    @apply py-1 px-4 text-sm border-2 border-[#7083ff]
-           text-[#7083ff] bg-transparent
-           hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
-           hover:text-white font-bold rounded-xl
-           transition-all duration-300
-           cursor-pointer;
-  }
-
-  /* Large Outline Variant */
-  .zuzzuu-button-outline-lg {
-    @apply py-3 px-8 text-lg border-2 border-[#7083ff]
-           text-[#7083ff] bg-transparent
-           hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
-           hover:text-white font-bold rounded-xl
-           transition-all duration-300
-           cursor-pointer;
-  }
-}
 /* Hide scrollbar for Chrome, Safari, and Opera */
 .button-container::-webkit-scrollbar {
   display: none;
 }
 
 section {
-  padding:1rem 2rem;
+  padding: 1rem 2rem;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
@@ -186,33 +72,40 @@ section {
     display: none; /* Chrome, Safari, Opera */
   }
 }
-/* image loader */
-.spinner-loader {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: var(--color-purple); /* Spinner color */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
+/* Span header text */
+.gradient-text {
+  background: var(--zuzzuu-pink-rainbow-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 2 !important;
+  text-align: center;
+  font-size: 1.875rem;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+@media (min-width: 768px) {
+  .gradient-text {
+    font-size: 2.25rem;
   }
 }
-/* image loader */
 
-/* mainloder */
+@media (min-width: 1024px) {
+  .gradient-text {
+    font-size: 2.5rem;
+  }
+}
+/* Span header text */
+
+/* Main loader */
 .main-loader {
   position: relative;
   width: 80px;
   height: 80px;
-  border: 8px solid rgba(200, 200, 200, 0.3); /* Light gray background circle */
-  border-top: 8px solid var(--color-turquoise); /* Highlighted part */
+  border: 8px solid rgba(200, 200, 200, 0.3);
+  border-top: 8px solid var(--color-turquoise);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -225,57 +118,57 @@ section {
     transform: rotate(360deg);
   }
 }
+/* Main loader */
 
-/* mainloader */
-
-/* Container for Accordion and ImagePane */
-.container-maximize-your-sale {
-  display: flex;
-  flex-direction: column; /* Stack vertically on mobile */
-  gap: 2rem;
-  align-items: flex-start;
+/* zuzzuu-button */
+.zuzzuu-button {
+  @apply text-sm font-bold
+         border-2 border-[#eaeaea]
+         rounded-xl
+         text-white
+         w-fit
+         px-6 py-2;
+  background: var(--zuzzuu-pink-rainbow-color);
+  background-clip: padding-box;
 }
 
-@media (min-width: 768px) {
-  .container-maximize-your-sale {
-    flex-direction: row; /* Align horizontally on desktop */
-  }
+.zuzzuu-button-outline {
+  @apply border-2 border-[#7083ff]
+         text-[#7083ff] bg-transparent
+         hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
+         hover:text-white font-bold py-2 px-6 rounded-xl
+         transition-all duration-300
+         cursor-pointer;
 }
 
-/* Accordion Section */
-.accordion {
-  width: 100%; /* Full width on mobile */
+.zuzzuu-button:disabled,
+.zuzzuu-button-outline:disabled {
+  @apply opacity-50 cursor-not-allowed;
 }
 
-@media (min-width: 768px) {
-  .accordion {
-    width: 50%; /* Half width on desktop */
-  }
+.zuzzuu-button-sm {
+  @apply py-1 px-4 text-sm;
 }
 
-/* ImagePane Section */
-.maximize-your-sale-large-image-container {
-  width: 100%; /* Full width on mobile */
+.zuzzuu-button-lg {
+  @apply py-3 px-8 text-lg;
 }
 
-@media (min-width: 768px) {
-  .maximize-your-sale-large-image-container {
-    width: 50%; /* Half width on desktop */
-  }
+.zuzzuu-button-outline-sm {
+  @apply py-1 px-4 text-sm border-2 border-[#7083ff]
+         text-[#7083ff] bg-transparent
+         hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
+         hover:text-white font-bold rounded-xl
+         transition-all duration-300
+         cursor-pointer;
 }
 
-/* Animation for Fade-In Effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.zuzzuu-button-outline-lg {
+  @apply py-3 px-8 text-lg border-2 border-[#7083ff]
+         text-[#7083ff] bg-transparent
+         hover:bg-gradient-to-r hover:from-[#29d7ff] hover:via-[#7083ff] hover:to-[#e000ff]
+         hover:text-white font-bold rounded-xl
+         transition-all duration-300
+         cursor-pointer;
 }
-
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease forwards;
-}
+/* zuzzuu-button */

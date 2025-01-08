@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ImagePane from "./ImagePane";
+import "../styles/components/maximize-your-sale.css";
 
 const MaximizeUserSales = () => {
   const [activeSection, setActiveSection] = useState("1");
