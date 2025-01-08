@@ -9,6 +9,7 @@ const FeaturesData = ({ features }) => {
           <div key={index}>
             <h3 className="gradient-text-h2">{feature.title}</h3>
             <p>{feature.description}</p>
+            <br />
           </div>
         ))}
       </div>
