@@ -86,6 +86,19 @@ section {
   font-size: 1.875rem;
 }
 
+.gradient-text-h2 {
+  background: var(--zuzzuu-pink-rainbow-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: bold;
+  margin-bottom: 0.75rem; /* Smaller margin */
+  line-height: 1.5 !important; /* Adjusted line height */
+  text-align: left; /* Align left instead of center */
+  font-size: 1.5rem; /* Smaller font size */
+}
+
 @media (min-width: 768px) {
   .gradient-text {
     font-size: 2.25rem;
