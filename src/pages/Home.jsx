@@ -3,6 +3,7 @@ import Features from "../components/Features";
 import Subscribe from "../components/Subscribe";
 import Button from "../components/Button";
 import MaximizeUserSales from "../components/MaximizeUserSales";
+import JoinThem from "../components/JoinThem";
 
 
 const Home = () => (
@@ -15,10 +16,10 @@ const Home = () => (
         >
           Discover the all-new Zuzzuu ➔
         </a>
-        <h1 className="text-4xl my-2.5 text-gray-800 font-bold">One Platform for</h1>
-        <span className="gradient-text">
-          Revenue Growth
-        </span>
+        <h1 className="text-4xl my-2.5 text-gray-800 font-bold">
+          One Platform for
+        </h1>
+        <span className="gradient-text">Revenue Growth</span>
         <p className="description mb-5 text-gray-600">
           <span className="font-bold">
             One platform for all your needs, a hub for AI powered work:
@@ -31,6 +32,7 @@ const Home = () => (
     </section>
 
     <Features />
+    <JoinThem />
     <MaximizeUserSales />
     <Subscribe />
   </div>

@@ -1,0 +1,23 @@
+{
+  "text": "ZUZZUU has already helped dozens of teams succeed.",
+  "buttonText": "JOIN THEM",
+  "buttonLink": "contact",
+  "images": [
+    {
+      "src": "images/logo_teknosa.png",
+      "alt": "Teknosa"
+    },
+    {
+      "src": "images/logo_vodafone.jpg",
+      "alt": "Vodafone"
+    },
+    {
+      "src": "images/logo_allianz.png",
+      "alt": "Allianz"
+    },
+    {
+      "src": "images/logo_modanisa.png",
+      "alt": "Modanisa"
+    }
+  ]
+}
