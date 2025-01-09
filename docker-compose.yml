@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  portfolio-web:
+  zuzzuu-web:
     image: nginx:alpine
-    container_name: portfolio-website
+    container_name: zuzzuu-website
     ports:
       - "3000:3000" # Expose port 3000
     volumes:
@@ -12,18 +12,18 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     networks:
-      - portfolio-network
+      - zuzzuu-network
     restart: unless-stopped
 
   certbot:
     image: certbot/certbot
-    container_name: portfolio-certbot
+    container_name: zuzzuu-certbot
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     networks:
-      - portfolio-network
+      - zuzzuu-network
 
 networks:
-  portfolio-network:
+  zuzzuu-network:
     driver: bridge
