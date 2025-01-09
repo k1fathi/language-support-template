@@ -1,33 +1,61 @@
-// src/components/Testimonials.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Fetch data from the JSON file
   useEffect(() => {
-    fetch("/data/testimonials.json")
-      .then((response) => response.json())
-      .then((data) => setTestimonials(data))
-      .catch((error) => console.error("Error loading testimonials:", error));
+    const fetchTestimonials = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch("/data/testimonials.json");
+        if (!response.ok) {
+          throw new Error("Failed to fetch testimonials");
+        }
+        const data = await response.json();
+        setTestimonials(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTestimonials();
   }, []);
 
-  // Function to handle "Read Story" button click
   const handleReadStory = (index) => {
     navigate(`/testimonial/${index}`);
   };
+
+  if (isLoading) {
+    return (
+      <section className="w-full max-w-7xl mx-auto px-4 py-12">
+        <div className="text-center">Loading testimonials...</div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full max-w-7xl mx-auto px-4 py-12">
+        <div className="text-center text-red-600">Error: {error}</div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
       {/* Header Section */}
       <div className="text-center mb-8 md:mb-16">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">
           <span className="gradient-text">All teams love the way</span>
           <br />
           <span className="gradient-text">to use ZUZZUU!</span>
-        </h1>
+        </h2>
         <p className="text-gray-800 text-base md:text-lg">
           Supercharge your sales and marketing.
           <br />
@@ -38,30 +66,26 @@ const Testimonials = () => {
       {/* Testimonials Grid */}
       <div className="flex flex-wrap justify-center gap-8">
         {testimonials.map((testimonial, index) => (
-          <div
+          <article
             key={index}
             className="bg-white rounded-[16px] shadow-lg overflow-hidden max-w-[350px] text-left"
           >
             <img
               src={testimonial.card_image}
-              alt={`Testimonial ${index + 1}`}
+              alt={`${testimonial.name}'s testimonial`}
               className="w-full h-auto"
             />
             <div className="p-7 flex flex-col items-start">
-              <p className="text-gray-700">
-                “With Zuzzuu we’ve seen a <strong>40% improvement</strong> in
-                our total go-to-market efficiency!”
-              </p>
-              <div
-                className="w-full mt-6 flex justify-center"
+              <p className="text-gray-700">{testimonial.quote}</p>
+              <button
                 onClick={() => handleReadStory(index)}
+                className="mt-6 bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer w-full"
+                aria-label={`Read ${testimonial.name}'s story`}
               >
-                <span className="bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer">
-                  Read Story →
-                </span>
-              </div>
+                Read Story →
+              </button>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>
