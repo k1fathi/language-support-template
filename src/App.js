@@ -8,7 +8,6 @@ import { ZButton } from "./components/ZButton";
 import "./styles/App.css";
 import Loader from "./components/Loader";
 
-
 // Lazy-loaded components
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
@@ -16,7 +15,8 @@ const Blog = lazy(() => import("./pages/Blog"));
 const FeaturesPage = lazy(() => import("./pages/Features"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
-
+const Testimonials = lazy(() => import("./components/Testimonials")); // Lazy-load Testimonials
+const TestimonialPage = lazy(() => import("./pages/TestimonialPage")); // Lazy-load TestimonialPage
 
 function App() {
   return (
@@ -35,6 +35,9 @@ function App() {
                 <Route path="/features" element={<FeaturesPage />} />
                 <Route path="/case-studies" element={<CaseStudiesPage />} />
                 <Route path="/case-study/:id" element={<CaseStudyDetail />} />
+                {/* Add Testimonials and TestimonialPage routes */}
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/testimonial/:index" element={<TestimonialPage />} />
               </Routes>
             </Suspense>
           </main>

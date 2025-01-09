@@ -4,6 +4,7 @@ import Subscribe from "../components/Subscribe";
 import Button from "../components/Button";
 import MaximizeUserSales from "../components/MaximizeUserSales";
 import JoinThem from "../components/JoinThem";
+import Testimonials from "../components/Testimonials";
 
 
 const Home = () => (
@@ -33,6 +34,7 @@ const Home = () => (
 
     <Features />
     <JoinThem />
+    <Testimonials/>
     <MaximizeUserSales />
     <Subscribe />
   </div>
