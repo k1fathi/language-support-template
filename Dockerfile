@@ -1,4 +1,24 @@
-# Stage 1: Build the React app
+# Base image for development
+FROM node:18-alpine as dev
+
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install --legacy-peer-deps
+
+# Copy the application source code
+COPY . .
+
+# Expose port 3000 for React's development server
+EXPOSE 3000
+
+# Start the React development server
+CMD ["npm", "start"]
+
+# Production build stage
 FROM node:18-alpine as build
 
 WORKDIR /app
@@ -9,23 +29,25 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install --legacy-peer-deps
 
-# Copy the rest of the application code
+# Copy the application source code
 COPY . .
 
 # Build the React app
 RUN npm run build
 
-# Stage 2: Serve the app using Nginx
-FROM nginx:alpine
+# Production server
+FROM node:18-alpine as production
 
-# Copy the build output to the Nginx HTML directory
-COPY --from=build /app/build /usr/share/nginx/html
+WORKDIR /app
 
-# Copy the Nginx configuration file
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy the build artifacts
+COPY --from=build /app/build /app/build
 
-# Expose port 3000 (as per your Nginx configuration)
+# Install serve globally
+RUN npm install -g serve
+
+# Expose port 3000 for production
 EXPOSE 3000
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Serve the app
+CMD ["serve", "-s", "build", "-l", "3000"]
