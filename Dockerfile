@@ -49,5 +49,9 @@ RUN npm install -g serve
 # Expose port 3000 for production
 EXPOSE 3000
 
+# Copy serve.json for custom routing
+COPY serve.json ./build/serve.json
+
 # Serve the app
 CMD ["serve", "-s", "build", "-l", "3000"]
+
