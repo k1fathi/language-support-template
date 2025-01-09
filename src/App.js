@@ -10,12 +10,13 @@ import ErrorBoundary from "./components/ErrorBoundary";
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogPage = lazy(() => import("./pages/BlogPage")); // Lazy-loaded BlogPage
 const FeaturesPage = lazy(() => import("./pages/Features"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
-const Testimonials = lazy(() => import("./components/Testimonials"));
+const Testimonials = lazy(() => import("./components/TestimonialCard"));
 const TestimonialPage = lazy(() => import("./pages/TestimonialPage"));
-const NotFound = lazy(() => import("./pages/NotFound")); // New NotFound Component
+const NotFound = lazy(() => import("./pages/NotFound")); // Lazy-loaded NotFound
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/blog" element={<Blog />} />
+                  {/* Added Blogs route */}
+                  <Route path="/blog/:id" element={<BlogPage />} />{" "}
+                  {/* Added BlogPage route */}
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/features" element={<FeaturesPage />} />
                   <Route path="/case-studies" element={<CaseStudiesPage />} />
@@ -38,7 +42,7 @@ function App() {
                     path="/testimonial/:index"
                     element={<TestimonialPage />}
                   />
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<NotFound />} />{" "}
                   {/* Fallback route */}
                 </Routes>
               </Suspense>
