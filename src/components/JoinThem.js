@@ -25,23 +25,26 @@ const JoinThem = () => {
   };
 
   return (
-    <section id="join_them" className="text-center py-8">
+    <section id="join_them" className="text-center py-8 px-4">
+      {/* Text and Button */}
       <p className="text-lg mb-4">
         {data.text}{" "}
         <button
-          className="bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer font-bold" // Added font-bold
+          className="bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer font-bold text-sm sm:text-base"
           onClick={(event) => navigateToLocation(event, data.buttonLink)}
         >
           {data.buttonText}
         </button>
       </p>
-      <div className="flex justify-center gap-8 mt-6">
+
+      {/* Images */}
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-6">
         {data.images.map((image, index) => (
           <img
             key={index}
             src={image.src}
             alt={image.alt}
-            className="h-10 w-auto" // Adjust size as needed
+            className="h-8 sm:h-10 w-auto" // Adjust size for mobile and larger screens
           />
         ))}
       </div>
