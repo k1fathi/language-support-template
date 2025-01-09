@@ -1,4 +1,4 @@
-# Dockerfile
+# Stage 1: Build the React app
 FROM node:18-alpine as build
 
 WORKDIR /app
@@ -15,14 +15,17 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Install serve globally
-RUN npm install -g serve
+# Stage 2: Serve the app using Nginx
+FROM nginx:alpine
 
-# Copy serve.json for routing configuration
-COPY serve.json ./build/serve.json
+# Copy the build output to the Nginx HTML directory
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 3000 (default for serve)
+# Copy the Nginx configuration file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 3000 (as per your Nginx configuration)
 EXPOSE 3000
 
-# Serve the app using serve with the custom configuration
-CMD ["serve", "-s", "build", "-l", "3000", "-c", "build/serve.json"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
