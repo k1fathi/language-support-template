@@ -68,18 +68,32 @@ const Testimonials = () => {
         {testimonials.map((testimonial, index) => (
           <article
             key={index}
-            className="bg-white rounded-[16px] shadow-lg overflow-hidden max-w-[350px] text-left"
+            className="bg-white rounded-[16px] shadow-lg overflow-hidden w-80 h-96 flex flex-col relative"
           >
-            <img
-              src={testimonial.card_image}
-              alt={`${testimonial.name}'s testimonial`}
-              className="w-full h-auto"
-            />
-            <div className="p-7 flex flex-col items-start">
-              <p className="text-gray-700">{testimonial.quote}</p>
+            <div className="h-40 overflow-hidden">
+              <img
+                src={testimonial.card_image}
+                alt={`${testimonial.name}'s testimonial`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-6 flex-grow">
+              <p className="text-gray-800 text-lg">
+                "With Zuzzuu we've seen a{" "}
+                <span className="font-bold text-purple-900">
+                  40% improvement
+                </span>{" "}
+                in our{" "}
+                <span className="text-blue-900">
+                  total go-to-market efficiency
+                </span>
+                !"
+              </p>
+            </div>
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center">
               <button
                 onClick={() => handleReadStory(index)}
-                className="mt-6 bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer w-full"
+                className="bg-gray-50 rounded-xl border border-gray-200 py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 transition-colors flex items-center gap-2"
                 aria-label={`Read ${testimonial.name}'s story`}
               >
                 Read Story →
