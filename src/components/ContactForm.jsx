@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../components/Button";
+import Button from "./Button";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
