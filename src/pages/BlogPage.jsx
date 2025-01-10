@@ -54,17 +54,17 @@ const BlogPage = () => {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
+      <div className="detail-page-container">
       {/* Blog Image */}
       <div className="h-192 overflow-hidden rounded-lg mb-8">
         <img
           src={blog.page_image}
           alt={blog.card_title}
-          className="w-full h-full object-cover"
+          className="w-full h-auto rounded-lg mb-6"
         />
       </div>
 
       {/* Blog Content */}
-      <div className="px-4 max-w-6xl mx-auto">
         <h1 className="gradient-text">
           {blog.card_title}
         </h1>

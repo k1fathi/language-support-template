@@ -4,7 +4,7 @@ import React from "react";
 const FeaturesData = ({ features }) => {
   return (
     <section>
-      <div className="px-4 max-w-6xl mx-auto">
+      <div className="detail-page-container">
         {features.map((feature, index) => (
           <div key={index} className="mb-6">
             {" "}

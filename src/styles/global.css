@@ -185,3 +185,22 @@ section {
          cursor-pointer;
 }
 /* zuzzuu-button */
+
+.detail-page-container {
+  padding: 1rem; /* px-4 */
+  max-width: 72rem; /* max-w-6xl */
+  margin: 0 auto; /* Center horizontally */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack children vertically if needed */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh; /* Ensure it fills the full viewport height */
+}
+
+/* Add detail-page margins */
+@media (min-width: 1024px) { /* Desktop mode */
+  .detail-page-container {
+    padding: 3rem; /* px-4 */
+  }
+}
+

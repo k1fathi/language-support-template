@@ -40,26 +40,7 @@ const NotFound = () => {
             <FaHome />
             Go Home
           </button>
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200"
-          >
-            <FaArrowLeft />
-            Go Back
-          </button>
-        </div>
-
-        {/* Animated Search Icon */}
-        <div className="mt-12 animate-bounce">
-          <FaSearch size={48} color="#9CA3AF" />
-        </div>
-
-        {/* Fun Facts */}
-        <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-          <h3 className="text-sm font-medium text-blue-800 mb-2">
-            Did you know?
-          </h3>
-        </div>
+                 </div>
       </div>
     </div>
   );

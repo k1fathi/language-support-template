@@ -83,7 +83,7 @@ const CaseStudyDetail = () => {
   }
 
   return (
-      <section class="py-12 px-4 max-w-6xl mx-auto">
+      <section class="py-12 detail-page-container">
       <div className="container mx-auto px-4">
         {/* Case Study Card */}
         <div className="backdrop-blur-lg bg-white/30 rounded-xl overflow-hidden">

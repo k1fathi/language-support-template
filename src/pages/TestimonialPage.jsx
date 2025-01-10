@@ -24,28 +24,28 @@ const TestimonialPage = () => {
   const paragraphs = testimonial.story.split("\n");
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
-      {/* Header Image */}
-      <img
-        src={testimonial.header_image}
-        alt={testimonial.title}
-        className="w-full h-auto rounded-lg mb-6"
-      />
+    <section className="w-full max-w-7xl mx-auto px-4 py-12">
+      <div className="detail-page-container">
+        {/* Header Image */}
+        <img
+          src={testimonial.header_image}
+          alt={testimonial.title}
+          className="w-full h-auto rounded-lg mb-6"
+        />
 
-      {/* Title */}
-      <h1 className="gradient-text">
-        {testimonial.title}
-      </h1>
+        {/* Title */}
+        <h1 className="gradient-text">{testimonial.title}</h1>
 
-      {/* Story Content */}
-      <div className="text-justify text-gray-800 text-base leading-7">
-        {paragraphs.map((paragraph, index) => (
-          <div key={index} className="mb-4">
-            {paragraph}
-          </div>
-        ))}
+        {/* Story Content */}
+        <div className="text-justify">
+          {paragraphs.map((paragraph, index) => (
+            <div key={index} className="mb-4">
+              {paragraph}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
