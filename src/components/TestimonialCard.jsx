@@ -31,6 +31,11 @@ const Testimonials = () => {
     navigate(`/testimonial/${index}`);
   };
 
+  // Function to replace *word* with <strong>word</strong>
+  const formatQuote = (quote) => {
+    return quote.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
+  };
+
   if (isLoading) {
     return (
       <section className="w-full max-w-7xl mx-auto px-4 py-12">
@@ -68,7 +73,7 @@ const Testimonials = () => {
         {testimonials.map((testimonial, index) => (
           <article
             key={index}
-            className="bg-white rounded-[16px] shadow-lg overflow-hidden w-80 h-96 flex flex-col relative"
+            className="bg-white rounded-[16px] shadow-lg overflow-hidden w-80 h-96 flex flex-col relative transform transition-transform duration-300 ease-in-out hover:scale-105"
           >
             <div className="h-40 overflow-hidden">
               <img
@@ -78,17 +83,12 @@ const Testimonials = () => {
               />
             </div>
             <div className="p-6 flex-grow">
-              <p className="text-gray-800 text-lg">
-                "With Zuzzuu we've seen a{" "}
-                <span className="font-bold text-purple-900">
-                  40% improvement
-                </span>{" "}
-                in our{" "}
-                <span className="text-blue-900">
-                  total go-to-market efficiency
-                </span>
-                !"
-              </p>
+              <p
+                className="text-gray-800 text-lg"
+                dangerouslySetInnerHTML={{
+                  __html: formatQuote(testimonial.quote), // Render formatted quote
+                }}
+              />
             </div>
             <div className="absolute bottom-6 left-0 right-0 flex justify-center">
               <button
