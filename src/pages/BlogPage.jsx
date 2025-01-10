@@ -31,6 +31,11 @@ const BlogPage = () => {
     fetchBlog();
   }, [id]);
 
+  // Function to format text starting with a number and followed by \n\n
+  const formatContent = (content) => {
+    return content.replace(/(\d+\.\s.*?)(\n\n)/g, "<strong>$1</strong>$2");
+  };
+
   if (isLoading) {
     return (
       <section className="w-full max-w-7xl mx-auto px-4 py-12">
@@ -60,11 +65,16 @@ const BlogPage = () => {
 
       {/* Blog Content */}
       <div className="prose max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="gradient-text">
           {blog.card_title}
         </h1>
         <p className="text-gray-600 text-sm mb-8">{blog.card_date}</p>
-        <p className="text-gray-700 whitespace-pre-line">{blog.page_content}</p>
+        <div
+          className="text-gray-700 whitespace-pre-line"
+          dangerouslySetInnerHTML={{
+            __html: formatContent(blog.page_content), // Render formatted content
+          }}
+        />
       </div>
     </section>
   );
