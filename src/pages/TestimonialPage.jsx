@@ -33,7 +33,7 @@ const TestimonialPage = () => {
       />
 
       {/* Title */}
-      <h1 className="gradient-text text-3xl md:text-4xl font-bold mb-6">
+      <h1 className="gradient-text">
         {testimonial.title}
       </h1>
 

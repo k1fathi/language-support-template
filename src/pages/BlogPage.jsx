@@ -33,7 +33,7 @@ const BlogPage = () => {
 
   // Function to format text starting with a number and followed by \n\n
   const formatContent = (content) => {
-    return content.replace(/(\d+\.\s.*?)(\n\n)/g, "<strong>$1</strong>$2");
+    return content.replace(/\*\*(.*?)\*\*/g, "<h2 class='gradient-text-h2'>$1</h2>");
   };
 
   if (isLoading) {
