@@ -90,10 +90,10 @@ const Testimonials = () => {
                 }}
               />
             </div>
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+            <div className="p-6">
               <button
                 onClick={() => handleReadStory(index)}
-                className="bg-gray-50 rounded-xl border border-gray-200 py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 transition-colors flex items-center gap-2"
+                className="w-full bg-gray-50 rounded-xl border border-gray-200 py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
                 aria-label={`Read ${testimonial.name}'s story`}
               >
                 Read Story →
