@@ -55,7 +55,7 @@ const BlogPage = () => {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
       {/* Blog Image */}
-      <div className="h-96 overflow-hidden rounded-lg mb-8">
+      <div className="h-192 overflow-hidden rounded-lg mb-8">
         <img
           src={blog.page_image}
           alt={blog.card_title}
@@ -64,13 +64,13 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Content */}
-      <div className="prose max-w-3xl mx-auto">
+      <div className="px-4 max-w-6xl mx-auto">
         <h1 className="gradient-text">
           {blog.card_title}
         </h1>
         <p className="text-gray-600 text-sm mb-8">{blog.card_date}</p>
         <div
-          className="text-gray-700 whitespace-pre-line"
+          className="text-justify"
           dangerouslySetInnerHTML={{
             __html: formatContent(blog.page_content), // Render formatted content
           }}

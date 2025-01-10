@@ -93,7 +93,7 @@ section {
   background-clip: text;
   text-fill-color: transparent;
   font-weight: bold;
-  margin-bottom: 0.75rem; /* Smaller margin */
+  margin: 2rem 0 0.5rem; /* Smaller margin */
   line-height: 1.5 !important; /* Adjusted line height */
   text-align: left; /* Align left instead of center */
   font-size: 1.5rem; /* Smaller font size */
