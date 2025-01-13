@@ -79,11 +79,7 @@ const ImagePane = ({ imageUrl, isLoading, className = "", alt = "" }) => {
           alt={alt} // Use the alt prop here
           className={combinedImageClasses.trim()} // Trim to remove extra spaces
         />
-      ) : (
-        <div className="text-gray-600">
-          Please select a category to load the image.
-        </div>
-      )}
+      ) : null}
     </div>
   );
 };

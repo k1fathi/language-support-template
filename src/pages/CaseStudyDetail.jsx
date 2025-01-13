@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ImagePane from "../components/ImagePane"; // Ensure the path is correct
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
@@ -83,17 +84,18 @@ const CaseStudyDetail = () => {
   }
 
   return (
-      <section class="py-12 detail-page-container">
-      <div className="container mx-auto px-4">
+    <section>
+      <div className="text-center">
         {/* Case Study Card */}
         <div className="backdrop-blur-lg bg-white/30 rounded-xl overflow-hidden">
           {/* Image with Gradient Overlay */}
           <div className="relative h-96 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[#29d7ff]/20 to-[#e000ff]/20" />
-            <img
-              src={study.image}
+            <ImagePane
+              imageUrl={study.image}
               alt={study.title}
-              className="w-full h-full object-cover"
+              isLoading={loading}
+              className="w-full h-full object-cover object-top"
             />
           </div>
 
@@ -226,7 +228,7 @@ const CaseStudyDetail = () => {
           </div>
         </div>
       </div>
-      </section>
+    </section>
   );
 };
 

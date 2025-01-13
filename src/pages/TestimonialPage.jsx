@@ -23,26 +23,34 @@ const TestimonialPage = () => {
   }, [index]);
 
   if (!testimonial) {
-    return <div>Loading...</div>;
+   return (
+     <div className="flex justify-center items-center min-h-screen">
+       <div className="dot-loading">
+         <span>.</span>
+         <span>.</span>
+         <span>.</span>
+       </div>
+     </div>
+   );
   }
 
   // Split the story text by newlines
   const paragraphs = testimonial.story.split("\n");
 
   return (
-    <section className="w-full flex justify-center">
+    <section>
       <div className="detail-page-container">
         {/* Header Image using ImagePane */}
         <div>
           <ImagePane
             imageUrl={testimonial.header_image}
             isLoading={isLoading}
-            className="w-full h-auto rounded-lg"
+            className="header-image"
           />
         </div>
 
         {/* Title */}
-        <h1 className="gradient-text text-3xl font-bold mb-6">
+        <h1 className="gradient-text">
           {testimonial.title}
         </h1>
 

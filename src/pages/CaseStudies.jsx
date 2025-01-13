@@ -41,11 +41,9 @@ const CaseStudiesPage = () => {
   };
 
   return (
-    <section className="py-12 detail-page-container">
-      <div className="text-center mb-12">
-         <span className="gradient-text">
-          Sharing the Success
-        </span>
+    <section>
+      <div className="text-center mb-8 md:mb-16">
+        <span className="gradient-text">Sharing the Success</span>
         <p className="text-gray-700 mt-4 text-lg">
           Don’t just take our word for it. <br /> Discover inspiring stories of
           players who transformed their leisure time into a world of fun and

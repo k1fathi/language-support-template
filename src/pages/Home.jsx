@@ -9,7 +9,7 @@ import Testimonials from "../components/TestimonialCard";
 
 const Home = () => (
   <div>
-    <section id="discover_the_all_new_zuzzuu" className="mt-6">
+    <section id="discover_the_all_new_zuzzuu" className="md:mt-10">
       <div className="text-center">
         <a
           href="/features" // Replace with a valid URL or path

@@ -64,11 +64,8 @@ const ImageLoader = () => {
   };
 
   return (
-    <section
-      id="features"
-      className="flex flex-col justify-center items-center"
-    >
-      <div className="relative w-full max-w-6xl">
+    <section id="features">
+      <div className="w-full mb-6">
         {/* Arrow buttons - only shown when needed */}
         {showArrows && (
           <>

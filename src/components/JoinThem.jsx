@@ -25,7 +25,7 @@ const JoinThem = () => {
   };
 
   return (
-    <section id="join_them" className="text-center py-8 px-4">
+    <section id="join_them">
       {/* Text and Button */}
       <p className="text-lg mb-4">
         {data.text}{" "}

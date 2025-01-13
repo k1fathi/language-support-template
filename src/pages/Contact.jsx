@@ -3,7 +3,7 @@ import ContactForm from "../components/ContactForm";
 
 const Contact = () => {
   return (
-    <section className="py-12">
+    <section>
       <div className="text-center mb-12">
          <span className="gradient-text">
           Got a Question?

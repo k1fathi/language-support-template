@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ImagePane from "../components/ImagePane"; // Ensure the path is correct
+import ImagePane from "../components/ImagePane";
 
 const BlogPage = () => {
   const { id } = useParams(); // Get the blog ID from the URL
@@ -41,16 +41,12 @@ const BlogPage = () => {
   };
 
   if (isLoading) {
-    return (
-      <section className="w-full max-w-7xl mx-auto px-4 py-12">
-        <div className="text-center">Loading blog...</div>
-      </section>
-    );
+    return null; // Render nothing while loading
   }
 
   if (error) {
     return (
-      <section className="w-full max-w-7xl mx-auto px-4 py-12">
+      <section>
         <div className="text-center text-red-600">Error: {error}</div>
       </section>
     );
@@ -60,14 +56,12 @@ const BlogPage = () => {
     <section>
       <div className="detail-page-container">
         {/* Blog Image */}
-        <div className="h-192 overflow-hidden rounded-lg mb-8">
-          <ImagePane
-            imageUrl={blog.page_image}
-            alt={blog.card_title}
-            isLoading={isLoading}
-            className="aspect-[48/9] object-cover object-[15%] w-full h-[30rem]"
-          />
-        </div>
+        <ImagePane
+          imageUrl={blog.page_image}
+          alt={blog.card_title}
+          isLoading={isLoading}
+          className="header-image"
+        />
 
         {/* Blog Content */}
         <h1 className="gradient-text">{blog.card_title}</h1>

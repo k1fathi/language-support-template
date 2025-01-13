@@ -35,7 +35,7 @@ const Blogs = () => {
   }
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-12">
+    <section>
       {/* Header Section */}
       <div className="text-center mb-8 md:mb-16">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">

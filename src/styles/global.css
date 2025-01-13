@@ -33,7 +33,7 @@
 }
 
 section {
-  padding: 1rem 2rem;
+  padding:2rem;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
@@ -46,7 +46,7 @@ section {
     width: 100%;
   }
   section {
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     padding: 0 1rem;
   }
 }
@@ -80,7 +80,7 @@ section {
   background-clip: text;
   text-fill-color: transparent;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin: 1rem;
   line-height: 2 !important;
   text-align: center;
   font-size: 1.875rem;
@@ -196,20 +196,59 @@ section {
   align-items: center; /* Center horizontally */
   min-height: 100vh; /* Ensure it fills the full viewport height */
 }
-
-.image-container {
-  width: 100%; /* Take up the full width of its parent */
-  max-width: 72rem; /* Match the max-width of .detail-page-container */
-  margin: 0 auto; /* Center horizontally */
-  padding: 0 1rem; /* Add horizontal padding to match .detail-page-container */
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+.detail-page-container .header-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
 }
-/* Add detail-page margins */
-@media (min-width: 1024px) { /* Desktop mode */
-  .detail-page-container {
-    padding: 3rem; /* px-4 */
+
+/* Mobile (default) */
+@media screen and (max-width: 767px) {
+  .detail-page-container .header-image {
+    aspect-ratio: 6/4;
+    height: 16rem;
+    object-position:15%;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Desktop (768px and above) */
+@media screen and (min-width: 768px) {
+  .detail-page-container .header-image {
+    aspect-ratio: 48/9;
+    height: 30rem;
+    object-position: 15%;
+  }
+}
+
+.dot-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem; /* Adjust size as needed */
+  color: #3b82f6; /* Blue color, adjust as needed */
+}
+
+.dot-loading span {
+  animation: dot-bounce 1.4s infinite ease-in-out;
+}
+
+.dot-loading span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot-loading span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-1rem); /* Adjust bounce height as needed */
   }
 }
 
