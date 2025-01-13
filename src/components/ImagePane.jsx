@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const ImagePane = ({ imageUrl, isLoading }) => {
+const ImagePane = ({ imageUrl, isLoading, className = "", alt = "" }) => {
   const [showLoader, setShowLoader] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
@@ -55,6 +55,15 @@ const ImagePane = ({ imageUrl, isLoading }) => {
     }
   `;
 
+  // Default classes for the image
+  const defaultImageClasses =
+    "max-w-full max-h-[80vh] object-contain transition-opacity duration-1000 ease-in-out";
+
+  // Combine default classes with the className prop
+  const combinedImageClasses = `${defaultImageClasses} ${
+    imageLoaded ? "opacity-100" : "opacity-0"
+  } ${className}`;
+
   return (
     <div className="w-full max-w-6xl flex justify-center items-center min-h-[300px]">
       {/* Inject the keyframes into a style tag */}
@@ -67,10 +76,8 @@ const ImagePane = ({ imageUrl, isLoading }) => {
       ) : currentImage ? (
         <img
           src={currentImage}
-          alt="Loaded content"
-          className={`max-w-full max-h-[80vh] object-contain transition-opacity duration-1000 ease-in-out ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          alt={alt} // Use the alt prop here
+          className={combinedImageClasses.trim()} // Trim to remove extra spaces
         />
       ) : (
         <div className="text-gray-600">

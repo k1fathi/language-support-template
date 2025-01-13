@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ImagePane from "../components/ImagePane"; // Ensure the path is correct
 
 const BlogPage = () => {
   const { id } = useParams(); // Get the blog ID from the URL
@@ -33,7 +34,10 @@ const BlogPage = () => {
 
   // Function to format text starting with a number and followed by \n\n
   const formatContent = (content) => {
-    return content.replace(/\*\*(.*?)\*\*/g, "<h2 class='gradient-text-h2'>$1</h2>");
+    return content.replace(
+      /\*\*(.*?)\*\*/g,
+      "<h2 class='gradient-text-h2'>$1</h2>"
+    );
   };
 
   if (isLoading) {
@@ -53,21 +57,20 @@ const BlogPage = () => {
   }
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-12">
+    <section>
       <div className="detail-page-container">
-      {/* Blog Image */}
-      <div className="h-192 overflow-hidden rounded-lg mb-8">
-        <img
-          src={blog.page_image}
-          alt={blog.card_title}
-          className="w-full h-auto rounded-lg mb-6"
-        />
-      </div>
+        {/* Blog Image */}
+        <div className="h-192 overflow-hidden rounded-lg mb-8">
+          <ImagePane
+            imageUrl={blog.page_image}
+            alt={blog.card_title}
+            isLoading={isLoading}
+            className="aspect-[48/9] object-cover object-[15%] w-full h-[30rem]"
+          />
+        </div>
 
-      {/* Blog Content */}
-        <h1 className="gradient-text">
-          {blog.card_title}
-        </h1>
+        {/* Blog Content */}
+        <h1 className="gradient-text">{blog.card_title}</h1>
         <p className="text-gray-600 text-sm mb-8">{blog.card_date}</p>
         <div
           className="text-justify"

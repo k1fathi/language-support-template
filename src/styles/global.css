@@ -197,6 +197,15 @@ section {
   min-height: 100vh; /* Ensure it fills the full viewport height */
 }
 
+.image-container {
+  width: 100%; /* Take up the full width of its parent */
+  max-width: 72rem; /* Match the max-width of .detail-page-container */
+  margin: 0 auto; /* Center horizontally */
+  padding: 0 1rem; /* Add horizontal padding to match .detail-page-container */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
 /* Add detail-page margins */
 @media (min-width: 1024px) { /* Desktop mode */
   .detail-page-container {
