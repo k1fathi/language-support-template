@@ -27,7 +27,7 @@ const JoinThem = () => {
   return (
     <section id="join_them">
       {/* Text and Button */}
-      <p className="text-lg mb-4">
+      <p className="text-lg text-center mb-4">
         {data.text}{" "}
         <button
           className="bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer font-bold text-sm sm:text-base"

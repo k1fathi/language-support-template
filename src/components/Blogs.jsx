@@ -47,7 +47,7 @@ const Blogs = () => {
       </div>
 
       {/* Blogs Grid */}
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center gap-8 w-full md:max-w-[66%] mx-auto md:grid md:grid-cols-3 md:justify-items-center">
         {blogs.map((blog, index) => (
           <BlogCard key={index} blog={blog} index={index} />
         ))}
