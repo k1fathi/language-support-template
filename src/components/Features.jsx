@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import ImagePane from "./ImagePane"; 
+import ImagePane from "./ImagePane";
 
 const ImageLoader = () => {
   const [activeButton, setActiveButton] = useState(null);
@@ -9,6 +9,7 @@ const ImageLoader = () => {
   const [buttons, setButtons] = useState([]);
   const [showArrows, setShowArrows] = useState(false);
   const [hoveredButton, setHoveredButton] = useState(null);
+  const buttonContainerRef = useRef(null); // Ref for the button container
 
   useEffect(() => {
     // Fetch the button data from the JSON file
@@ -30,8 +31,8 @@ const ImageLoader = () => {
 
     // Check if buttons container needs arrows
     const checkOverflow = () => {
-      const container = document.querySelector(".button-container");
-      if (container) {
+      if (buttonContainerRef.current) {
+        const container = buttonContainerRef.current;
         setShowArrows(container.scrollWidth > container.clientWidth);
       }
     };
@@ -55,17 +56,18 @@ const ImageLoader = () => {
   };
 
   const handleScroll = (direction) => {
-    const container = document.querySelector(".button-container");
-    const scrollAmount = container.clientWidth / 2;
-    container.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+    if (buttonContainerRef.current) {
+      const scrollAmount = buttonContainerRef.current.clientWidth / 2;
+      buttonContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <section id="features">
-      <div className="w-full mb-6">
+      <div className="w-full mb-6 relative">
         {/* Arrow buttons - only shown when needed */}
         {showArrows && (
           <>
@@ -90,7 +92,10 @@ const ImageLoader = () => {
         )}
 
         {/* Button container */}
-        <div class="flex overflow-x-auto scrollbar-hide-mobile scroll-smooth px-4 md:px-8 flex-row flex-nowrap justify-center items-center h-24 md:h-32 lg:h-32">
+        <div
+          ref={buttonContainerRef}
+          className="flex overflow-x-auto scrollbar-hide-mobile scroll-smooth px-4 md:px-8 flex-row flex-nowrap justify-start md:justify-center items-center h-24 md:h-32 lg:h-32 pl-4 md:pl-0"
+        >
           {buttons.map((button) => (
             <div
               key={button.id}
