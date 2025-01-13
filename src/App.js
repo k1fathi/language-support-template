@@ -10,12 +10,12 @@ import ErrorBoundary from "./components/ErrorBoundary";
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
 const Blog = lazy(() => import("./pages/Blog"));
-const BlogPage = lazy(() => import("./pages/BlogPage")); // Lazy-loaded BlogPage
+const BlogDetail = lazy(() => import("./pages/BlogDetail")); // Lazy-loaded BlogDetail
 const FeaturesPage = lazy(() => import("./pages/Features"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 const Testimonials = lazy(() => import("./components/TestimonialCard"));
-const TestimonialPage = lazy(() => import("./pages/TestimonialPage"));
+const TestimonialDetail = lazy(() => import("./pages/TestimonialDetail"));
 const NotFound = lazy(() => import("./pages/NotFound")); // Lazy-loaded NotFound
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/blog" element={<Blog />} />
                   {/* Added Blogs route */}
-                  <Route path="/blog/:id" element={<BlogPage />} />{" "}
-                  {/* Added BlogPage route */}
+                  <Route path="/blog/:id" element={<BlogDetail />} />{" "}
+                  {/* Added BlogDetail route */}
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/features" element={<FeaturesPage />} />
                   <Route path="/case-studies" element={<CaseStudiesPage />} />
@@ -40,7 +40,7 @@ function App() {
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route
                     path="/testimonial/:index"
-                    element={<TestimonialPage />}
+                    element={<TestimonialDetail />}
                   />
                   <Route path="*" element={<NotFound />} />{" "}
                   {/* Fallback route */}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ImagePane from "../components/ImagePane"; // Ensure the path is correct
 
-const TestimonialPage = () => {
+const TestimonialDetail = () => {
   const { index } = useParams();
   const [testimonial, setTestimonial] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -67,4 +67,4 @@ const TestimonialPage = () => {
   );
 };
 
-export default TestimonialPage;
+export default TestimonialDetail;

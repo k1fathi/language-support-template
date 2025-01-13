@@ -96,7 +96,7 @@ const CaseStudiesPage = () => {
         </div>
 
         {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-8 w-full md:max-w-[66%] mx-auto md:grid md:grid-cols-3 md:justify-items-center">
           {filteredCaseStudies.map((study) => (
             <CaseStudyCard key={study.id} study={study} />
           ))}

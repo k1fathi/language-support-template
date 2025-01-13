@@ -59,10 +59,13 @@ const ImagePane = ({ imageUrl, isLoading, className = "", alt = "" }) => {
   const defaultImageClasses =
     "max-w-full max-h-[80vh] object-contain transition-opacity duration-1000 ease-in-out";
 
-  // Combine default classes with the className prop
-  const combinedImageClasses = `${defaultImageClasses} ${
+  // Use className if provided, otherwise use default classes
+  const imageClasses = className || defaultImageClasses;
+
+  // Add opacity classes based on imageLoaded state
+  const combinedImageClasses = `${imageClasses} ${
     imageLoaded ? "opacity-100" : "opacity-0"
-  } ${className}`;
+  }`;
 
   return (
     <div className="w-full max-w-6xl flex justify-center items-center min-h-[300px]">
@@ -77,7 +80,7 @@ const ImagePane = ({ imageUrl, isLoading, className = "", alt = "" }) => {
         <img
           src={currentImage}
           alt={alt} // Use the alt prop here
-          className={combinedImageClasses.trim()} // Trim to remove extra spaces
+          className={combinedImageClasses.trim()} // Apply combined classes
         />
       ) : null}
     </div>

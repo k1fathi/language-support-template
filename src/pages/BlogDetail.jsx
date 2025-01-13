@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ImagePane from "../components/ImagePane";
 
-const BlogPage = () => {
+const BlogDetail = () => {
   const { id } = useParams(); // Get the blog ID from the URL
   const [blog, setBlog] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -77,4 +77,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default BlogDetail;
