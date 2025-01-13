@@ -94,10 +94,12 @@ const MaximizeUserSales = () => {
         </div>
 
         {/* Right Side - ImagePane */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 max-w-6xl flex justify-end min-h-[10rem] overflow-hidden">
           <ImagePane
+            key={activeImage} // Add a key to re-trigger the animation
             imageUrl={activeImage}
-            isLoading={isImageLoading} // Pass the image loading state
+            isLoading={isImageLoading}
+            className="animate-[swipeFromRight_1s_ease-in-out]"
           />
         </div>
       </div>

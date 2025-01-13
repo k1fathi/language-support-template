@@ -68,7 +68,7 @@ const ImagePane = ({ imageUrl, isLoading, className = "", alt = "" }) => {
   }`;
 
   return (
-    <div className="w-full max-w-6xl flex justify-center items-center min-h-[300px]">
+    <div className="w-full max-w-6xl flex justify-center items-center min-h-[15rem]">
       {/* Inject the keyframes into a style tag */}
       <style>{spinKeyframes}</style>
 

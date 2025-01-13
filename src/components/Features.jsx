@@ -90,7 +90,7 @@ const ImageLoader = () => {
         )}
 
         {/* Button container */}
-        <div class="flex overflow-x-auto scrollbar-hide-mobile scroll-smooth px-4 md:px-8 flex-row flex-nowrap content-around justify-evenly items-center h-24 md:h-32 lg:h-40">
+        <div class="flex overflow-x-auto scrollbar-hide-mobile scroll-smooth px-4 md:px-8 flex-row flex-nowrap justify-center items-center h-24 md:h-32 lg:h-32">
           {buttons.map((button) => (
             <div
               key={button.id}
