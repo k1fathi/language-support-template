@@ -8,17 +8,25 @@ export const ZButton = () => {
 
   const loadLottieAnimation = () => {
     // Define the path to the JSON file relative to the public directory
-    const animationPath = 'data/z_button.json';
+    const animationPath = "data/z_button.json";
 
-    const animation = lottie.loadAnimation({
-      container: lottieRef.current,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      path: animationPath,
-    });
+    // Use fetch to load the JSON file
+    fetch(animationPath)
+      .then((response) => response.json())
+      .then((animationData) => {
+        const animation = lottie.loadAnimation({
+          container: lottieRef.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: animationData, // Use the loaded animation data
+        });
 
-    return animation;
+        return animation;
+      })
+      .catch((error) => {
+        console.error("Failed to load Lottie animation:", error);
+      });
   };
 
   const toggleIframe = () => {
@@ -54,7 +62,9 @@ export const ZButton = () => {
 
     // Cleanup on unmount
     return () => {
-      animation.destroy();
+      if (animation) {
+        animation.destroy();
+      }
     };
   }, []);
 
@@ -84,15 +94,3 @@ export const ZButton = () => {
     </React.Fragment>
   );
 };
-
-// Usage Example:
-// import { ZButton } from './components/ZButton';
-//
-// const App = () => {
-//     return (
-//         <div>
-//             <ZButton />
-//             {/* Your other content */}
-//         </div>
-//     );
-// };
