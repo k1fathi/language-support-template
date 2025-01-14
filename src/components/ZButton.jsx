@@ -5,6 +5,7 @@ export const ZButton = () => {
   const lottieRef = useRef(null);
   const iframeRef = useRef(null);
   const [isIframeVisible, setIsIframeVisible] = useState(false);
+  const animationRef = useRef(null); // Ref to store the Lottie animation instance
 
   const loadLottieAnimation = () => {
     // Define the path to the JSON file relative to the public directory
@@ -14,15 +15,19 @@ export const ZButton = () => {
     fetch(animationPath)
       .then((response) => response.json())
       .then((animationData) => {
-        const animation = lottie.loadAnimation({
+        // Destroy any existing animation before loading a new one
+        if (animationRef.current) {
+          animationRef.current.destroy();
+        }
+
+        // Load the new animation and store it in the ref
+        animationRef.current = lottie.loadAnimation({
           container: lottieRef.current,
           renderer: "svg",
           loop: true,
           autoplay: true,
           animationData: animationData, // Use the loaded animation data
         });
-
-        return animation;
       })
       .catch((error) => {
         console.error("Failed to load Lottie animation:", error);
@@ -50,7 +55,7 @@ export const ZButton = () => {
 
   useEffect(() => {
     // Initialize animation
-    const animation = loadLottieAnimation();
+    loadLottieAnimation();
 
     // Check initial state from session storage
     const status = sessionStorage.getItem("zButtonStatus");
@@ -62,8 +67,8 @@ export const ZButton = () => {
 
     // Cleanup on unmount
     return () => {
-      if (animation) {
-        animation.destroy();
+      if (animationRef.current) {
+        animationRef.current.destroy();
       }
     };
   }, []);
@@ -72,8 +77,8 @@ export const ZButton = () => {
     <React.Fragment>
       {/* Z-Logo Button */}
       <div
-        className="fixed bottom-4 right-4 z-[1001] bg-transparent rounded-full p-2 
-                          cursor-pointer flex justify-center items-center w-[5.3rem] h-[5.3rem] overflow-hidden"
+        className="fixed bottom-6 right-6 z-[1001] bg-transparent rounded-full p-3 
+                          cursor-pointer flex justify-center items-center w-[7rem] h-[7rem] overflow-hidden"
         onClick={toggleIframe}
       >
         {/* Lottie Container */}

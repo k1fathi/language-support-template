@@ -50,7 +50,7 @@ function App() {
             </ErrorBoundary>
           </main>
           <Footer />
-          <ZButton /> {/* Add the ZButton component here */}
+          <ZButton /> {/* ZButton is included only here */}
         </div>
       </Router>
     </LoaderProvider>
@@ -58,3 +58,4 @@ function App() {
 }
 
 export default App;
+
