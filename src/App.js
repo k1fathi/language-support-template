@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { ZButton } from "./components/ZButton"; // Import the ZButton component
 
 // Lazy-loaded components
 const Contact = lazy(() => import("./pages/Contact"));
@@ -49,6 +50,7 @@ function App() {
             </ErrorBoundary>
           </main>
           <Footer />
+          <ZButton /> {/* Add the ZButton component here */}
         </div>
       </Router>
     </LoaderProvider>
