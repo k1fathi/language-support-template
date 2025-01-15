@@ -7,19 +7,16 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies with legacy peer deps flag
 RUN npm install --legacy-peer-deps
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN npm run build --legacy-peer-deps
 
-# Clean up development dependencies
-RUN npm prune --production
-
-# Install serve globally
+# Install serve
 RUN npm install -g serve
 
 # Expose the application port
