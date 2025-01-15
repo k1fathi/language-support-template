@@ -1,26 +1,34 @@
 # Use the official Node.js image as the base image
-FROM node:18-alpine
+FROM node:18-alpine as builder
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package*.json ./
 
-# Install dependencies with legacy peer deps flag
-RUN npm install --legacy-peer-deps
+# Install dependencies
+RUN npm install
 
-# Copy the rest of the application code
+# Copy all files
 COPY . .
 
 # Build the application
-RUN npm run build --legacy-peer-deps
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine
+
+WORKDIR /app
 
 # Install serve
 RUN npm install -g serve
 
-# Expose the application port
+# Copy build files from builder stage
+COPY --from=builder /app/build ./build
+
+# Expose port
 EXPOSE 3000
 
-# Start the application using serve
+# Start the application
 CMD ["serve", "-s", "build", "-l", "3000"]
