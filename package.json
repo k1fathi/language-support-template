@@ -1,32 +1,44 @@
 {
-  "name": "language-support-template",
+  "name": "zuzzuu",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "serve": "^14.2.1",
-    "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
     "lottie-web": "^5.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
     "react-router-dom": "^6.22.0",
-    "react-scripts": "^5.0.1",
+    "serve": "^14.2.1",
     "sitemap": "^8.0.0",
     "styled-components": "^6.1.13",
     "web-vitals": "^4.2.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "babel-loader": "^9.2.1",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.5.1",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^10.1.3",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.17",
+    "terser-webpack-plugin": "^5.3.11",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:prod": "serve -s build"
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "start:prod": "serve -s dist"
   },
   "eslintConfig": {
     "extends": [

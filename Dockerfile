@@ -1,34 +1,35 @@
-# Use the official Node.js image as the base image
-FROM node:18-alpine as builder
+# Stage 1: Build the application
+FROM node:18-alpine AS builder
 
 # Set the working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files for dependency installation
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies (only production and build dependencies)
+RUN npm install --legacy-peer-deps
 
-# Copy all files
+# Copy the rest of the application code
 COPY . .
 
-# Build the application
+# Build the application for production
 RUN npm run build
 
-# Production stage
+# Stage 2: Serve the built application
 FROM node:18-alpine
 
+# Set the working directory
 WORKDIR /app
 
-# Install serve
+# Install the serve package globally
 RUN npm install -g serve
 
-# Copy build files from builder stage
+# Copy the built application from the builder stage
 COPY --from=builder /app/build ./build
 
-# Expose port
+# Expose the application port
 EXPOSE 3000
 
-# Start the application
+# Serve the application
 CMD ["serve", "-s", "build", "-l", "3000"]
