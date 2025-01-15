@@ -1,4 +1,4 @@
-# Use the official Node.js image as the base image
+# Build stage
 FROM node:18-alpine as builder
 
 # Set the working directory
@@ -10,10 +10,16 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy all files
+# Copy configuration files
+COPY config-overrides.js ./
+
+# Copy source code
 COPY . .
 
-# Build the application
+# Build with optimization
+ENV NODE_ENV=production
+ENV GENERATE_SOURCEMAP=false
+
 RUN npm run build
 
 # Production stage
@@ -24,11 +30,11 @@ WORKDIR /app
 # Install serve
 RUN npm install -g serve
 
-# Copy build files from builder stage
+# Copy build files
 COPY --from=builder /app/build ./build
 
-# Expose port
 EXPOSE 3000
 
-# Start the application
+ENV NODE_ENV=production
+
 CMD ["serve", "-s", "build", "-l", "3000"]
