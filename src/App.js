@@ -20,6 +20,7 @@ const TestimonialDetail = lazy(() => import("./pages/TestimonialDetail"));
 const NotFound = lazy(() => import("./pages/NotFound")); // Lazy-loaded NotFound
 
 function App() {
+      console.log(`App is running in ${process.env.NODE_ENV} mode`);
   return (
     <LoaderProvider>
       <Router>
