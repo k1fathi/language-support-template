@@ -37,11 +37,13 @@ const Testimonials = () => {
   };
 
   if (isLoading) {
-    return (
-      <section>
-        <div className="text-center">Loading testimonials...</div>
-      </section>
-    );
+   return (
+     <div className="dot-loading">
+       <span>.</span>
+       <span>.</span>
+       <span>.</span>
+     </div>
+   );
   }
 
   if (error) {

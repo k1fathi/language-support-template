@@ -15,7 +15,13 @@ const JoinThem = () => {
   }, []);
 
   if (!data) {
-    return <div>Loading...</div>; // Show a loading state while data is being fetched
+    return (
+      <div className="dot-loading">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </div>
+    ); // Show dot-loading animation while data is being fetched
   }
 
   // Function to handle button click

@@ -41,7 +41,13 @@ const BlogDetail = () => {
   };
 
   if (isLoading) {
-    return null; // Render nothing while loading
+   return (
+     <div className="dot-loading">
+       <span>.</span>
+       <span>.</span>
+       <span>.</span>
+     </div>
+   );
   }
 
   if (error) {

@@ -252,6 +252,7 @@ section {
   }
 }
 
+
 @keyframes swipeFromRight {
   0% {
     transform: translateX(100%);

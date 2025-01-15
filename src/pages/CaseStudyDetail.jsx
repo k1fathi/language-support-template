@@ -34,17 +34,10 @@ const CaseStudyDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div
-          className="animate-pulse text-2xl font-bold"
-          style={{
-            background: "var(--zuzzuu-pink-rainbow-color)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Loading...
-        </div>
+      <div className="dot-loading">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
       </div>
     );
   }

@@ -1,110 +1,61 @@
-import React, { useState, useEffect } from "react";
-import ImagePane from "./ImagePane";
-import "../styles/components/maximize-your-sale.css";
+// src/components/JoinThem.js
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
-const MaximizeUserSales = () => {
-  const [activeSection, setActiveSection] = useState("1");
-  const [sections, setSections] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Initial loading state
-  const [isImageLoading, setIsImageLoading] = useState(false); // Loading state for image transitions
+const JoinThem = () => {
+  const [data, setData] = useState(null);
+  const navigate = useNavigate(); // Initialize the navigate function
 
+  // Load data from the JSON file
   useEffect(() => {
-    fetch("/data/maximizeYourSales.json")
+    fetch("/data/join_them.json")
       .then((response) => response.json())
-      .then((data) => {
-        setSections(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      });
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error loading join them data:", error));
   }, []);
 
-  const getFeatureColor = (id) => {
-    if (id === activeSection) {
-      return "text-[#29d7ff]";
-    }
-    return "text-[#8E97CD] hover:text-[#29d7ff] transition-colors duration-300";
-  };
-
-  const handleSectionClick = (id) => {
-    setIsImageLoading(true); // Show loader when a section is clicked
-    setActiveSection(id);
-
-    // Simulate a delay for image loading (replace with actual image loading logic if needed)
-    setTimeout(() => {
-      setIsImageLoading(false); // Hide loader after the image is loaded
-    }, 1000); // Adjust the delay as needed
-  };
-
-  if (isLoading) {
+  if (!data) {
     return (
-      <div className="flex justify-center items-center h-48">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="dot-loading">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
       </div>
-    );
+    ); // Show dot-loading animation while data is being fetched
   }
 
-  const activeImage = sections.find((s) => s.id === activeSection)?.image;
+  // Function to handle button click
+  const navigateToLocation = (event, link) => {
+    event.preventDefault();
+    navigate(`/${link}`); // Use the navigate function to go to the specified link
+  };
 
   return (
-    <section>
-      {/* Header Section */}
-      <div className="text-center mb-8 md:mb-16">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">
-          <span className="gradient-text">Maximize Your Sales</span>
-          <br />
-          <span className="gradient-text">with ZUZZUU!</span>
-        </h1>
-        <p className="text-gray-800 text-base md:text-lg">
-          Supercharge your sales and marketing.
-          <br />
-          All of your needs, in one place.
-        </p>
-      </div>
+    <section id="join_them">
+      {/* Text and Button */}
+      <p className="text-lg text-center mb-4">
+        {data.text}{" "}
+        <button
+          className="bg-gray-50 rounded-lg border border-gray-200 py-2 px-4 shadow-sm hover:bg-gray-100 transition-colors cursor-pointer font-bold text-sm sm:text-base"
+          onClick={(event) => navigateToLocation(event, data.buttonLink)}
+        >
+          {data.buttonText}
+        </button>
+      </p>
 
-      {/* Container for Accordion and ImagePane */}
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Left Side - Accordion */}
-        <div className="w-full md:w-1/2 space-y-6">
-          {sections.map((section) => (
-            <div
-              key={section.id}
-              className="cursor-pointer"
-              onClick={() => handleSectionClick(section.id)}
-            >
-              <h2
-                className={`text-2xl md:text-4xl font-bold transition-colors duration-300 ${getFeatureColor(
-                  section.id
-                )}`}
-              >
-                {section.title}
-              </h2>
-              {section.id === activeSection && (
-                <div className="mt-4 space-y-4 animate-fadeIn">
-                  <h3 className="text-gray-800 font-semibold">
-                    {section.bold_text}
-                  </h3>
-                  <p className="text-gray-600">{section.description}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Right Side - ImagePane */}
-        <div className="w-full md:w-1/2 max-w-6xl flex justify-end min-h-[10rem] overflow-hidden">
-          <ImagePane
-            key={activeImage} // Add a key to re-trigger the animation
-            imageUrl={activeImage}
-            isLoading={isImageLoading}
-            className="animate-[swipeFromRight_1s_ease-in-out]"
+      {/* Images */}
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-6">
+        {data.images.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            className="h-8 sm:h-10 w-auto" // Adjust size for mobile and larger screens
           />
-        </div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default MaximizeUserSales;
+export default JoinThem;

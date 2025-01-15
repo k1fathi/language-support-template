@@ -27,12 +27,22 @@ const Blogs = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading blogs...</div>;
+    return (
+      <div className="dot-loading">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </div>
+    );
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+ if (error) {
+   return (
+     <section>
+       <div className="text-center text-red-600">Error: {error}</div>
+     </section>
+   );
+ }
 
   return (
     <section>
