@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import config from "../config"; // Import the configuration file
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
-    contactReason: "General",
+    phoneNumber: "",
+    reasonForContact: "General",
     message: "",
   });
 
   const [validationMessages, setValidationMessages] = useState({
     email: "",
-    phone: "",
+    phoneNumber: "",
   });
+
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateEmail = (email) => {
     if (!email) {
@@ -26,12 +30,12 @@ const ContactForm = () => {
     return "";
   };
 
-  const validatePhone = (phone) => {
-    if (!phone) {
+  const validatePhoneNumber = (phoneNumber) => {
+    if (!phoneNumber) {
       return "Phone number is required.";
     }
-    if (!/^\d{10}$/.test(phone)) {
-      return "Phone number must be 10 digits.";
+    if (!/^\+?\d{10,}$/.test(phoneNumber)) {
+      return "Phone number must be at least 10 digits.";
     }
     return "";
   };
@@ -50,10 +54,10 @@ const ContactForm = () => {
         email: validateEmail(value),
       }));
     }
-    if (id === "input_customer_phone") {
+    if (id === "input_customer_phoneNumber") {
       setValidationMessages((prev) => ({
         ...prev,
-        phone: validatePhone(value),
+        phoneNumber: validatePhoneNumber(value),
       }));
     }
   };
@@ -61,26 +65,97 @@ const ContactForm = () => {
   const handleRadioChange = (e) => {
     setFormData((prev) => ({
       ...prev,
-      contactReason: e.target.value,
+      reasonForContact: e.target.value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate all fields before submission
     const emailMessage = validateEmail(formData.email);
-    const phoneMessage = validatePhone(formData.phone);
+    const phoneMessage = validatePhoneNumber(formData.phoneNumber);
 
     setValidationMessages({
       email: emailMessage,
-      phone: phoneMessage,
+      phoneNumber: phoneMessage,
     });
 
     // Proceed with submission if there are no validation errors
     if (!emailMessage && !phoneMessage) {
-      console.log("Form submitted:", formData);
-      // Add your form submission logic here
+      setIsLoading(true);
+      setResponseMessage("");
+
+      try {
+        // Step 1: Fetch CSRF Token
+        const csrfResponse = await fetch(`${config.apiBaseUrl}/csrf-token`, {
+          method: "GET",
+          credentials: "include", // Include cookies
+          headers: {
+            Origin: window.location.origin, // Dynamically set the origin
+          },
+        });
+
+        // Check if the response is JSON
+        const contentType = csrfResponse.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          const text = await csrfResponse.text();
+          console.error("Non-JSON Response:", text);
+          throw new Error("Invalid response from server");
+        }
+
+        const csrfData = await csrfResponse.json();
+        const csrfToken = csrfData.data.token;
+
+        // Step 2: Send Contact Form Data
+        const contactResponse = await fetch(
+          `${config.apiBaseUrl}/contact`, // Ensure the URL is correct
+          {
+            method: "POST",
+            credentials: "include", // Include cookies
+            headers: {
+              "Content-Type": "application/json",
+              Origin: window.location.origin, // Dynamically set the origin
+              "X-CSRF-Token": csrfToken,
+            },
+            body: JSON.stringify({
+              firstName: formData.firstName,
+              lastName: formData.lastName,
+              email: formData.email,
+              phoneNumber: formData.phoneNumber,
+              reasonForContact: formData.reasonForContact,
+              message: formData.message,
+            }),
+          }
+        );
+
+        // Check if the response is JSON
+        const contactContentType = contactResponse.headers.get("content-type");
+        if (
+          !contactContentType ||
+          !contactContentType.includes("application/json")
+        ) {
+          const text = await contactResponse.text();
+          console.error("Non-JSON Response:", text);
+          throw new Error("Invalid response from server");
+        }
+
+        const contactData = await contactResponse.json();
+
+        // Step 3: Display Response Message
+        if (contactData.success) {
+          setResponseMessage(
+            contactData.message || "Thank you for contacting us!"
+          );
+        } else {
+          setResponseMessage("Submission failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setResponseMessage("An error occurred. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -149,7 +224,7 @@ const ContactForm = () => {
         {/* Phone */}
         <div className="form-group">
           <label
-            htmlFor="input_customer_phone"
+            htmlFor="input_customer_phoneNumber"
             className="text-gray-500 block mb-2"
           >
             Phone Number<span className="text-pink-500">*</span>
@@ -157,14 +232,14 @@ const ContactForm = () => {
           <input
             type="tel"
             className="w-full border-b border-gray-300 focus:border-gray-900 outline-none py-2 transition-colors"
-            id="input_customer_phone"
-            value={formData.phone}
+            id="input_customer_phoneNumber"
+            value={formData.phoneNumber}
             onChange={handleChange}
             required
           />
-          {validationMessages.phone && (
+          {validationMessages.phoneNumber && (
             <span className="text-red-500 text-sm mt-1">
-              {validationMessages.phone}
+              {validationMessages.phoneNumber}
             </span>
           )}
         </div>
@@ -183,7 +258,7 @@ const ContactForm = () => {
                 id={`contact_${reason.toLowerCase().replace(" ", "_")}`}
                 name="contactreason_radiobutton"
                 value={reason}
-                checked={formData.contactReason === reason}
+                checked={formData.reasonForContact === reason}
                 onChange={handleRadioChange}
                 className="option-input radio"
               />
@@ -219,10 +294,12 @@ const ContactForm = () => {
 
       {/* Submit Button */}
       <div className="form-group full-width mt-6 flex items-center">
-        <Button type="submit" onClick={() => console.log("clicked")}>
-          Send Message
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? "Sending..." : "Send Message"}
         </Button>
-        <span className="contact-response-message ml-4 hidden"></span>
+        {responseMessage && (
+          <span className="ml-4 text-sm md:text-base">{responseMessage}</span>
+        )}
       </div>
     </form>
   );
