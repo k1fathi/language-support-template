@@ -5,15 +5,31 @@ const Subscription = () => {
   const [email, setEmail] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isMessageVisible, setIsMessageVisible] = useState(false); // Track message visibility
+  const [emailError, setEmailError] = useState(""); // Track email validation error
+
+  const validateEmail = (email) => {
+    if (!email) {
+      return "Email is required.";
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return "Please enter a valid email address.";
+    }
+    return "";
+  };
 
   const handleSubscribe = async () => {
-    if (!email) {
-      setResponseMessage("Please enter a valid email address.");
-      return;
+    const emailValidationMessage = validateEmail(email);
+    setEmailError(emailValidationMessage); // Set email validation error
+
+    if (emailValidationMessage) {
+      setIsMessageVisible(true); // Show the error message
+      return; // Stop further execution if email is invalid
     }
 
     setIsLoading(true);
     setResponseMessage("");
+    setIsMessageVisible(true); // Show the message
 
     try {
       // Step 1: Fetch CSRF Token
@@ -73,6 +89,7 @@ const Subscription = () => {
         setResponseMessage(
           subscribeData.message || "Thank you for subscribing!"
         );
+        setEmail(""); // Clear the email field
       } else {
         setResponseMessage("Subscription failed. Please try again.");
       }
@@ -81,6 +98,11 @@ const Subscription = () => {
       setResponseMessage("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
+
+      // Hide the message after 3 seconds with a fade-out effect
+      setTimeout(() => {
+        setIsMessageVisible(false);
+      }, 3000);
     }
   };
 
@@ -127,7 +149,10 @@ const Subscription = () => {
               type="email"
               placeholder="Email address"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError(""); // Clear email error when typing
+              }}
               className="w-full px-4 py-3 outline-none text-gray-700 text-base"
               required
             />
@@ -144,8 +169,24 @@ const Subscription = () => {
             </button>
           </div>
 
-          {responseMessage && (
+          {/* Email Validation Error Message */}
+          {emailError && (
             <div className="mt-2 text-white text-sm md:text-base text-center sm:text-left">
+              {emailError}
+            </div>
+          )}
+
+          {/* Response Message */}
+          {isMessageVisible && !emailError && (
+            <div
+              className={`mt-2 text-sm md:text-base text-center sm:text-left transition-opacity duration-500 ${
+                responseMessage.includes("Thank you") ||
+                responseMessage.includes("success")
+                  ? "text-green-500"
+                  : "text-red-500"
+              }`}
+              style={{ opacity: isMessageVisible ? 1 : 0 }}
+            >
               {responseMessage}
             </div>
           )}
