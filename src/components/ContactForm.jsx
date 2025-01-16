@@ -19,6 +19,7 @@ const ContactForm = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isMessageVisible, setIsMessageVisible] = useState(false); // Track message visibility
 
   const validateEmail = (email) => {
     if (!email) {
@@ -34,8 +35,8 @@ const ContactForm = () => {
     if (!phoneNumber) {
       return "Phone number is required.";
     }
-    if (!/^\+?\d{10,}$/.test(phoneNumber)) {
-      return "Phone number must be at least 10 digits.";
+    if (!/^\+\d{1,3}\d{10}$/.test(phoneNumber)) {
+      return "Phone number must start with a '+' followed by a country code and 10 digits.";
     }
     return "";
   };
@@ -46,18 +47,32 @@ const ContactForm = () => {
       ...prev,
       [id.replace("input_customer_", "")]: value,
     }));
+  };
 
-    // Validate email and phone on change
+  const handleBlur = (e) => {
+    const { id, value } = e.target;
+
     if (id === "input_customer_email") {
       setValidationMessages((prev) => ({
         ...prev,
         email: validateEmail(value),
       }));
     }
+
     if (id === "input_customer_phoneNumber") {
+      // Automatically add a '+' if missing
+      let formattedPhoneNumber = value;
+      if (!formattedPhoneNumber.startsWith("+")) {
+        formattedPhoneNumber = `+${formattedPhoneNumber}`;
+        setFormData((prev) => ({
+          ...prev,
+          phoneNumber: formattedPhoneNumber,
+        }));
+      }
+
       setValidationMessages((prev) => ({
         ...prev,
-        phoneNumber: validatePhoneNumber(value),
+        phoneNumber: validatePhoneNumber(formattedPhoneNumber),
       }));
     }
   };
@@ -85,6 +100,7 @@ const ContactForm = () => {
     if (!emailMessage && !phoneMessage) {
       setIsLoading(true);
       setResponseMessage("");
+      setIsMessageVisible(true); // Show the message
 
       try {
         // Step 1: Fetch CSRF Token
@@ -142,11 +158,25 @@ const ContactForm = () => {
 
         const contactData = await contactResponse.json();
 
-        // Step 3: Display Response Message
+        // Step 3: Display Response Message and Clear Form on Success
         if (contactData.success) {
           setResponseMessage(
             contactData.message || "Thank you for contacting us!"
           );
+          // Clear the form
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            reasonForContact: "General",
+            message: "",
+          });
+
+          // Hide the success message after 500ms with a fade-out effect
+          setTimeout(() => {
+            setIsMessageVisible(false);
+          }, 1500);
         } else {
           setResponseMessage("Submission failed. Please try again.");
         }
@@ -212,6 +242,7 @@ const ContactForm = () => {
             id="input_customer_email"
             value={formData.email}
             onChange={handleChange}
+            onBlur={handleBlur}
             required
           />
           {validationMessages.email && (
@@ -235,6 +266,7 @@ const ContactForm = () => {
             id="input_customer_phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
+            onBlur={handleBlur}
             required
           />
           {validationMessages.phoneNumber && (
@@ -297,8 +329,18 @@ const ContactForm = () => {
         <Button type="submit" disabled={isLoading}>
           {isLoading ? "Sending..." : "Send Message"}
         </Button>
-        {responseMessage && (
-          <span className="ml-4 text-sm md:text-base">{responseMessage}</span>
+        {isMessageVisible && (
+          <span
+            className={`ml-4 text-sm md:text-base transition-opacity duration-500 ${
+              responseMessage.includes("Thank you") ||
+              responseMessage.includes("success")
+                ? "text-green-500"
+                : "text-red-500"
+            }`}
+            style={{ opacity: isMessageVisible ? 1 : 0 }}
+          >
+            {responseMessage}
+          </span>
         )}
       </div>
     </form>
