@@ -41,7 +41,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-sm text-black hover:underline">
+              <Link to="/page/2" className="text-sm text-black hover:underline">
                 On-Demand Demo
               </Link>
             </li>

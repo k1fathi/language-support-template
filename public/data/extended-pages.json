@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "help-docs",
+    "content": "<h1>Help Docs</h1><p>This is the content for the help docs page.</p>"
+  },
+  {
+    "id": 2,
+    "name": "on-demand-demo",
+    "content": "<h1>On-Demand Demo</h1><p>This is the content for the on-demand demo page.</p>"
+  },
+  {
+    "id": 3,
+    "name": "events",
+    "content": "<h1>Events</h1><p>This is the content for the events page.</p>"
+  },
+  {
+    "id": 4,
+    "name": "api",
+    "content": "<h1>API</h1><p>This is the content for the API page.</p>"
+  },
+  {
+    "id": 5,
+    "name": "partners",
+    "content": "<h1>Partners</h1><p>This is the content for the partners page.</p>"
+  },
+  {
+    "id": 6,
+    "name": "dashboards",
+    "content": "<h1>Dashboards</h1><p>This is the content for the dashboards page.</p>"
+  },
+  {
+    "id": 7,
+    "name": "customer-journeys",
+    "content": "<h1>Customer Journeys</h1><p>This is the content for the customer journeys page.</p>"
+  },
+  {
+    "id": 8,
+    "name": "games",
+    "content": "<h1>Games</h1><p>This is the content for the games page.</p>"
+  },
+  {
+    "id": 9,
+    "name": "analytics",
+    "content": "<h1>Analytics</h1><p>This is the content for the analytics page.</p>"
+  },
+  {
+    "id": 10,
+    "name": "awards",
+    "content": "<h1>Awards</h1><p>This is the content for the awards page.</p>"
+  },
+  {
+    "id": 11,
+    "name": "data-tracking",
+    "content": "<h1>Data Tracking</h1><p>This is the content for the data tracking page.</p>"
+  },
+  {
+    "id": 12,
+    "name": "software-team-hub",
+    "content": "<h1>Software Team Hub</h1><p>This is the content for the software team hub page.</p>"
+  }
+]
