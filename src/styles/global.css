@@ -201,7 +201,6 @@ section {
   object-fit: cover;
   border-radius: 1rem;
 }
-
 /* Mobile (default) */
 @media screen and (max-width: 767px) {
   .detail-page-container .header-image {
@@ -262,4 +261,35 @@ section {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+
+
+.detail-page {
+  padding: 1rem; /* px-4 */
+  max-width: 72rem; /* max-w-6xl */
+  margin: 0 auto; /* Center horizontally */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack children vertically if needed */
+  min-height: 100vh; /* Ensure it fills the full viewport height */
+}
+
+.detail-page h2{
+   background: var(--zuzzuu-pink-rainbow-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: bold;
+  margin: 2rem 0; /* Smaller margin */
+  line-height: 1.5 !important; /* Adjusted line height */
+  font-size: 1.5rem; /* Smaller font size */
+}
+.detail-page  .zuzzuu-button{
+  @zuzzuu-button;
+  margin-top: 2rem !important;
+}
+.detail-page  .highlight{
+  font-weight: bold;
+  color: var(--color-indigo);
 }

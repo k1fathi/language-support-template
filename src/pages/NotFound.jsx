@@ -21,8 +21,8 @@ const NotFound = () => {
         </div>
 
         {/* Message */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">
+        <div className="space-y-4 ">
+          <h2 className="gradient-text-h2 text-center !important">
             Oops! Page Not Found
           </h2>
           <p className="text-gray-600">
@@ -40,7 +40,7 @@ const NotFound = () => {
             <FaHome />
             Go Home
           </button>
-                 </div>
+        </div>
       </div>
     </div>
   );
