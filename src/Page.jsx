@@ -40,7 +40,13 @@ const Page = () => {
   }, [id, navigate]); // Add navigate to the dependency array
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="dot-loading">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </div>
+    );
   }
 
   if (error) {

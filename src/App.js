@@ -8,7 +8,6 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ZButton } from "./components/ZButton"; // Import the ZButton component
 import Page from "./Page";
 
-
 // Lazy-loaded components
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
@@ -22,7 +21,7 @@ const TestimonialDetail = lazy(() => import("./pages/TestimonialDetail"));
 const NotFound = lazy(() => import("./pages/NotFound")); // Lazy-loaded NotFound
 
 function App() {
-      console.log(`App is running in ${process.env.NODE_ENV} mode`);
+  console.log(`App is running in ${process.env.NODE_ENV} mode`);
   return (
     <LoaderProvider>
       <Router>
@@ -35,9 +34,7 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/page/:id" element={<Page />} />
                   <Route path="/blog" element={<Blog />} />
-                  {/* Added Blogs route */}
-                  <Route path="/blog/:id" element={<BlogDetail />} />{" "}
-                  {/* Added BlogDetail route */}
+                  <Route path="/blog/:id" element={<BlogDetail />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/features" element={<FeaturesPage />} />
                   <Route path="/case-studies" element={<CaseStudiesPage />} />
@@ -47,13 +44,14 @@ function App() {
                     path="/testimonial/:index"
                     element={<TestimonialDetail />}
                   />
-                  <Route path="*" element={<NotFound />} />{" "}
-                  {/* Fallback route */}
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
             </ErrorBoundary>
           </main>
-          <Footer />
+          <Suspense fallback={<Loader />}>
+            <Footer />
+          </Suspense>
           <ZButton /> {/* ZButton is included only here */}
         </div>
       </Router>
@@ -62,4 +60,3 @@ function App() {
 }
 
 export default App;
-
