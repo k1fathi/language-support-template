@@ -19,6 +19,7 @@ const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 const Testimonials = lazy(() => import("./components/TestimonialCard"));
 const TestimonialDetail = lazy(() => import("./pages/TestimonialDetail"));
 const NotFound = lazy(() => import("./pages/NotFound")); // Lazy-loaded NotFound
+const EventsPage = lazy(() => import("./pages/EventsPage")); // Lazy-loaded EventsPage
 
 function App() {
   console.log(`App is running in ${process.env.NODE_ENV} mode`);
@@ -44,6 +45,8 @@ function App() {
                     path="/testimonial/:index"
                     element={<TestimonialDetail />}
                   />
+                  <Route path="/events" element={<EventsPage />} />{" "}
+                  {/* New route for EventsPage */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>

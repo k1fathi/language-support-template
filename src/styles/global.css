@@ -16,6 +16,7 @@
   --color-indigo: #7083ff;
   --color-purple: #c123ff;
   --color-pink: #e000ff;
+  --color-light-blue: #53a4ff;
 
   --zuzzuu-pink-rainbow-color: linear-gradient(
     113deg,
@@ -291,5 +292,5 @@ section {
 }
 .detail-page  .highlight{
   font-weight: bold;
-  color: var(--color-indigo);
+  color: var(--color-light-blue);
 }
