@@ -26,7 +26,7 @@ const Footer = () => {
             Address: İTÜ Teknokent ARI 2 <br />
             Binasi B Blok No: 501
             <br />
-            34467, Sariyer/Istanbul 34467, Sariyer/Istanbul
+            34467, Sariyer/Istanbul
           </address>
         </div>
 
