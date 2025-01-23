@@ -46,13 +46,13 @@ const TestimonialDetail = () => {
             imageUrl={testimonial.header_image}
             isLoading={isLoading}
             className="header-image"
+            animation="rubberBand" // Custom animation type
+            animationDuration="1.5s" // Custom animation duration
           />
         </div>
 
         {/* Title */}
-        <h1 className="gradient-text">
-          {testimonial.title}
-        </h1>
+        <h1 className="gradient-text">{testimonial.title}</h1>
 
         {/* Story Content */}
         <div className="text-justify">

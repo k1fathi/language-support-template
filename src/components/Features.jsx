@@ -9,6 +9,7 @@ const ImageLoader = () => {
   const [buttons, setButtons] = useState([]);
   const [showArrows, setShowArrows] = useState(false);
   const [hoveredButton, setHoveredButton] = useState(null);
+  const [animationKey, setAnimationKey] = useState(0); // Key to force re-render
   const buttonContainerRef = useRef(null); // Ref for the button container
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const ImageLoader = () => {
   const handleButtonClick = (buttonId, largeImgFrame) => {
     setActiveButton(buttonId);
     setIsLoading(true);
+    setAnimationKey((prevKey) => prevKey + 1); // Update key to force re-render
 
     setTimeout(() => {
       setIsLoading(false);
@@ -128,7 +130,13 @@ const ImageLoader = () => {
 
       {/* Use the ImagePane component with dynamic imageUrl */}
       <div className="w-full flex justify-center items-center">
-        <ImagePane imageUrl={loadedImage} isLoading={isLoading} />
+        <ImagePane
+          key={animationKey} // Force re-render on key change
+          imageUrl={loadedImage}
+          isLoading={isLoading}
+          animation="jello" // Custom animation type
+          animationDuration="1s" // Custom animation duration
+        />
       </div>
     </section>
   );

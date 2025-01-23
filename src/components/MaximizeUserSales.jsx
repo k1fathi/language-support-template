@@ -99,7 +99,8 @@ const MaximizeUserSales = () => {
             key={activeImage} // Add a key to re-trigger the animation
             imageUrl={activeImage}
             isLoading={isImageLoading}
-            className="animate-[swipeFromRight_1s_ease-in-out]"
+            animation="backInRight" // Custom animation type
+            animationDuration="1.5s" // Custom animation duration
           />
         </div>
       </div>

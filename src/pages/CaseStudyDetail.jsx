@@ -85,6 +85,8 @@ const CaseStudyDetail = () => {
           alt={study.title}
           isLoading={loading}
           className="header-image"
+          animation="rubberBand" // Custom animation type
+          animationDuration="1.5s" // Custom animation duration
         />
         {/* Content */}
 

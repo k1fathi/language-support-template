@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ZButton } from "./components/ZButton"; // Import the ZButton component
-import Page from "./Page";
+import Page from "./pages/Page";
 
 // Lazy-loaded components
 const Contact = lazy(() => import("./pages/Contact"));

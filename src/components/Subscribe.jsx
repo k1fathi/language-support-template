@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import config from "../config";
+import "animate.css"; // Ensure animate.css is imported
 
 const Subscription = () => {
   const [email, setEmail] = useState("");
@@ -7,6 +8,12 @@ const Subscription = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [isAnimating, setIsAnimating] = useState(true); // State to control animation
+
+  // Trigger animation on component mount
+  useEffect(() => {
+    setIsAnimating(true);
+  }, []);
 
   const validateEmail = (email) => {
     if (!email) {
@@ -135,7 +142,9 @@ const Subscription = () => {
             <img
               src="images/subscribe_phone.png"
               alt="Subscribe"
-              className="hidden md:block rounded-lg w-full max-w-[280px] mx-auto"
+              className={`hidden md:block rounded-lg w-full max-w-[280px] mx-auto animate__animated ${
+                isAnimating ? "animate__bounce" : ""
+              }`}
               style={{
                 transform: "scale(1.2)",
                 marginTop: "-3rem",
