@@ -121,6 +121,30 @@ const Subscription = () => {
     }
   };
 
+  useEffect(() => {
+    // Initial animation
+    setIsAnimating(true);
+
+    // Clear animation after 1 second
+    const clearInitialAnimation = setTimeout(() => {
+      setIsAnimating(false);
+    }, 1000);
+
+    // Set up repeating animation every 5 seconds
+    const animationInterval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 1000);
+    }, 5000);
+
+    // Cleanup on component unmount
+    return () => {
+      clearTimeout(clearInitialAnimation);
+      clearInterval(animationInterval);
+    };
+  }, []);
+
   return (
     <section id="subscribe_us_for_more" className="bg-[#f6fbf8]">
       <div className="text-center">
@@ -143,7 +167,7 @@ const Subscription = () => {
               src="images/subscribe_phone.png"
               alt="Subscribe"
               className={`hidden md:block rounded-lg w-full max-w-[280px] mx-auto animate__animated ${
-                isAnimating ? "animate__bounce" : ""
+                isAnimating ? "animate__flash" : ""
               }`}
               style={{
                 transform: "scale(1.2)",
