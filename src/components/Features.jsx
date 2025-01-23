@@ -134,8 +134,8 @@ const ImageLoader = () => {
           key={animationKey} // Force re-render on key change
           imageUrl={loadedImage}
           isLoading={isLoading}
-          animation="jello" // Custom animation type
-          animationDuration="1s" // Custom animation duration
+          animation="zoomIn" // Custom animation type
+          animationDuration="600ms" // Custom animation duration
         />
       </div>
     </section>
